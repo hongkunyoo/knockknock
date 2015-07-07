@@ -1,4 +1,4 @@
-package edu.handong.design.knockknock;
+package edu.handong.design.knockknock.activity;
 
 import java.util.Locale;
 
@@ -17,6 +17,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import edu.handong.design.knockknock.R;
 
 
 public class MainActivity extends Activity {
