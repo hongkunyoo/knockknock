@@ -23,4 +23,19 @@
 
     <style name="ButtonBarButton" />
 
+
+    <style name="MyCustomTheme" parent="@android:style/Theme.Holo.Light">
+        <item name="android:actionBarStyle">@style/MyActionBarTheme</item>
+    </style>
+
+    <style name="MyActionBarTheme" parent="@android:style/Widget.Holo.Light.ActionBar">
+        <item name="android:background">@color/knock_red</item>
+        <item name="android:logo">@android:color/transparent</item>
+        <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
+    </style>
+
+    <style name="MyActionBarTitleText">
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
 </resources>
