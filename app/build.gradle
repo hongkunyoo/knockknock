@@ -21,6 +21,7 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile project(':spinnerwheel')
     compile 'com.android.support:support-v13:22.2.0'
     compile 'com.android.support:support-v4:22.2.0'
 }
