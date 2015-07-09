@@ -8,39 +8,53 @@ import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
+import android.support.v4.app.ActionBarDrawerToggle;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toolbar;
 
 import edu.handong.design.knockknock.R;
 import edu.handong.design.knockknock.fragment.HomeFragment;
 import edu.handong.design.knockknock.fragment.HouseWorkFragment;
 import edu.handong.design.knockknock.fragment.MoneyFragment;
+import edu.handong.design.knockknock.view.CircleImageView;
 
 
 public class MainActivity extends Activity {
 
-    /**
-     * The {@link android.support.v4.view.PagerAdapter} that will provide
-     * fragments for each of the sections. We use a
-     * {@link FragmentPagerAdapter} derivative, which will keep every
-     * loaded fragment in memory. If this becomes too memory intensive, it
-     * may be best to switch to a
-     * {@link android.support.v13.app.FragmentStatePagerAdapter}.
-     */
-    SectionsPagerAdapter mSectionsPagerAdapter;
+    private DrawerLayout mDrawerLayout;
+    private LinearLayout mLinearLayout;
+    private ListView mDrawerList;
+    private ActionBarDrawerToggle mDrawerToggle;
 
-    /**
-     * The {@link ViewPager} that will host the section contents.
-     */
-    ViewPager mViewPager;
+    private CharSequence mDrawerTitle;
+    private CharSequence mTitle;
+    private String[] mPlanetTitles;
+
+    private CircleImageView mProfileImage;
+    private TextView mPetName;
+
+    // update the menu_main_ content by replacing fragments
+    Fragment fragment = null;
+
+
+//    SectionsPagerAdapter mSectionsPagerAdapter;
+//    ViewPager mViewPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,14 +64,75 @@ public class MainActivity extends Activity {
 
         // Create the adapter that will return a fragment for each of the three
         // primary sections of the activity.
-        mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
+//        mSectionsPagerAdapter = new SectionsPagerAdapter(getFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
-        mViewPager = (ViewPager) findViewById(R.id.pager);
-        mViewPager.setAdapter(mSectionsPagerAdapter);
+//        mViewPager = (ViewPager) findViewById(R.id.pager);
+//        mViewPager.setAdapter(mSectionsPagerAdapter);
+
+
+        mPlanetTitles = new String[]{"menu1, menu2, menu3"};
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        mLinearLayout = (LinearLayout) findViewById(R.id.left_drawer);
+        mDrawerList = (ListView) findViewById(R.id.drawer_list);
+//        mProfileImage  = (CircleImageView) findViewById(R.id.drawer_profile);
+//        mPetName = (TextView) findViewById(R.id.pet_name);
+
+
+        // set up the drawer's list view with items and click listener
+        mDrawerList.setAdapter(new ArrayAdapter<String>(this,
+                R.layout.drawer_list_item, mPlanetTitles));
+
+        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+
+        // ActionBarDrawerToggle ties together the the proper interactions
+        // between the sliding drawer and the action bar app icon
+        mDrawerToggle = new ActionBarDrawerToggle(
+                this,                  /* host Activity */
+                mDrawerLayout,         /* DrawerLayout object */
+                R.drawable.ic_drawer,  /* nav drawer image to replace 'Up' caret */
+                R.string.drawer_open,  /* "open drawer" description for accessibility */
+                R.string.drawer_close  /* "close drawer" description for accessibility */
+        ) {
+            public void onDrawerClosed(View view) {
+                getActionBar().setTitle(mTitle);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+
+            public void onDrawerOpened(View drawerView) {
+                getActionBar().setTitle(mDrawerTitle);
+                invalidateOptionsMenu(); // creates call to onPrepareOptionsMenu()
+            }
+        };
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
+        // set a custom shadow that overlays the menu_main_ content when the drawer opens
+        mDrawerLayout.setDrawerShadow(R.drawable.drawer_shadow, GravityCompat.START);
+
+//        Toolbar toolbar = (Toolbar) findViewById(R.id.my_awesome_toolbar);
+//        setActionBar(toolbar);
+
+        mDrawerLayout.setStatusBarBackgroundColor(getResources().getColor(R.color.knock_red));
+        // enable ActionBar app icon to behave as action to toggle nav drawer
+//        ActionBar actionBar = getActionBar();
+//        actionBar.setDisplayHomeAsUpEnabled(true);
+//        actionBar.setHomeButtonEnabled(true);
+//        actionBar.setBackgroundDrawable(this.getResources().getDrawable(R.drawable.custom_action_bar));
+
+        mTitle = getTitle();
+        mDrawerTitle = "Select Menu";
 
     }
 
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+
+        boolean drawerOpen = mDrawerLayout.isDrawerOpen(mLinearLayout);
+
+
+
+        return super.onPrepareOptionsMenu(menu);
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -76,11 +151,85 @@ public class MainActivity extends Activity {
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             startActivity(new Intent(MainActivity.this, TestActivity.class));
-
+            return true;
+        } else if (id == R.id.action_drawer) {
+            startActivity(new Intent(MainActivity.this, DrawerActivity.class));
             return true;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private class DrawerItemClickListener implements ListView.OnItemClickListener {
+        @Override
+        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            selectItem(position);
+        }
+    }
+
+    private void selectItem(int position) {
+
+        String tag = "";
+        switch (position) {
+            case 0:
+//                fragment = new ListFriendFragment();
+                break;
+            case 1:
+//                fragment = new MakeFriendFragment();
+                break;
+            case 2:
+//                fragment = new MessageBoxFragment();
+                break;
+            case 3:
+//                fragment = new CareHistoryFragment();
+                break;
+            case 4:
+//                fragment = new SettingFragment();
+                break;
+            default:
+                break;
+        }
+
+//        Bundle args = new Bundle();
+//        args.putInt(PlanetFragment.ARG_PLANET_NUMBER, position);
+//        fragment.setArguments(args);
+        tag = fragment.getClass().getSimpleName();
+        FragmentManager fragmentManager = getFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, tag).commit();
+
+        // update selected item and title, then close the drawer
+        mDrawerList.setItemChecked(position, true);
+        setTitle(mPlanetTitles[position]);
+        mDrawerLayout.closeDrawer(mLinearLayout);
+    }
+
+    public ListView getDrawer() {
+        return this.mDrawerList;
+    }
+
+    @Override
+    public void setTitle(CharSequence title) {
+        mTitle = title;
+        getActionBar().setTitle(mTitle);
+    }
+
+    /**
+     * When using the ActionBarDrawerToggle, you must call it during
+     * onPostCreate() and onConfigurationChanged()...
+     */
+
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        mDrawerToggle.syncState();
+    }
+
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        // Pass any configuration change to the drawer toggls
+        mDrawerToggle.onConfigurationChanged(newConfig);
     }
 
 
