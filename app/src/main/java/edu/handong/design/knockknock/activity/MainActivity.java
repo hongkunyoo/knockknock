@@ -155,6 +155,9 @@ public class MainActivity extends Activity {
         } else if (id == R.id.action_drawer) {
             startActivity(new Intent(MainActivity.this, DrawerActivity.class));
             return true;
+        } else if (id == R.id.action_test2) {
+            startActivity(new Intent(MainActivity.this, TestActivity2.class));
+            return true;
         }
 
         return super.onOptionsItemSelected(item);
@@ -250,13 +253,13 @@ public class MainActivity extends Activity {
             Fragment fragment = null;
             switch (position) {
                 case 0:
-                    fragment = new HomeFragment();
+//                    fragment = new HomeFragment();
                     break;
                 case 1:
-                    fragment = new HouseWorkFragment();
+//                    fragment = new HouseWorkFragment();
                     break;
                 case 2:
-                    fragment = new MoneyFragment();
+//                    fragment = new MoneyFragment();
                     break;
                 default:
                     break;

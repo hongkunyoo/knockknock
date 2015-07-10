@@ -20,5 +20,6 @@
     <string name="action_example">Example action</string>
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
+    <string name="title_activity_test_activity2">TestActivity2</string>
 
 </resources>

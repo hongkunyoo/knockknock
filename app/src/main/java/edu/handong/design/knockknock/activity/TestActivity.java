@@ -8,7 +8,10 @@ import android.graphics.Shader;
 import android.graphics.drawable.ShapeDrawable;
 import android.graphics.drawable.shapes.RectShape;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -21,7 +24,7 @@ import antistatic.spinnerwheel.AbstractWheel;
 import antistatic.spinnerwheel.adapters.AbstractWheelTextAdapter;
 import edu.handong.design.knockknock.R;
 
-public class TestActivity extends ActionBarActivity {
+public class TestActivity extends AppCompatActivity {
     private Toolbar toolbar;
     AbstractWheel city = null;
     private boolean scrolling = false;
@@ -34,6 +37,9 @@ public class TestActivity extends ActionBarActivity {
     boolean running;
     int progress = 0;
 
+    FloatingActionButton fab;
+    TabLayout tabLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,11 +51,22 @@ public class TestActivity extends ActionBarActivity {
 
         ToolbarTest();
 
+        setupTablayout();
 
     }
 
+    private void setupTablayout(){
+
+        tabLayout = (TabLayout) findViewById(R.id.tabLayout);
+        tabLayout.setTabGravity(TabLayout.GRAVITY_FILL);
+        tabLayout.addTab(tabLayout.newTab().setText("Tab 1"));
+        tabLayout.addTab(tabLayout.newTab().setText("Tab 2"));
+        tabLayout.addTab(tabLayout.newTab().setText("Tab 3"));
+        tabLayout.addTab(tabLayout.newTab().setText("Tab 4"));
+    }
+
     private void ToolbarTest() {
-        toolbar = (Toolbar) findViewById(R.id.tool_bar); // Attaching the layout to the toolbar object
+        toolbar = (Toolbar) findViewById(R.id.toolbar); // Attaching the layout to the toolbar object
         setSupportActionBar(toolbar);
     }
 
