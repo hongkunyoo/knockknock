@@ -2,6 +2,9 @@
 <resources>
 
     <string name="app_name">KnockKnock</string>
+    <string name="remove_message">삭제하시겠습니까?</string>
+
+
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>

@@ -24,7 +24,7 @@
         <item name="colorPrimary">@color/color_primary</item>
 
         <!--   darker variant for the status bar and contextual app bars -->
-        <item name="colorPrimaryDark">@color/color_primary_dark</item>
+        <item name="colorPrimaryDark">@color/color_primary</item>
 
         <!--   theme UI controls like checkboxes and text fields e.g. FloatActionButton -->
         <item name="colorAccent">@color/color_accent</item>
@@ -64,6 +64,11 @@
         <item name="android:layout_height">56dp</item>
     </style>
 
+    <style name="FloatingActionButtonBlue" parent="android:Widget.Material.Button">
+        <item name="android:background">@drawable/fab_background_blue</item>
+
+    </style>
+
     <style name="FloatingActionButton.Mini">
         <item name="android:layout_width">40dp</item>
         <item name="android:layout_height">40dp</item>
@@ -89,5 +94,24 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">?android:textColorSecondary</item>
         <item name="textAllCaps">false</item>
+    </style>
+
+    <style name="kProgressWheel">
+        <item name="android:layout_width">110dp</item>
+        <item name="android:layout_height">100dp</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:layout_centerInParent">true</item>
+
+
+        <item name="textColor">#222</item>
+        <item name="textSize">12sp</item>
+        <item name="rimColor">@android:color/transparent</item>
+        <item name="barLength">20dp</item>
+        <item name="barColor">@color/knock_blue</item>
+        <item name="barWidth">10dp</item>
+        <item name="rimWidth">0dp</item>
+
+
+
     </style>
 </resources>

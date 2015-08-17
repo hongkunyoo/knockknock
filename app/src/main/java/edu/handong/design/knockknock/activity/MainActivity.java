@@ -50,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
     private CircleImageView mProfileImage;
     // update the menu_main_ content by replacing fragments
-    Fragment fragment = null;
+//    Fragment fragment = null;
     ViewPager viewPager;
     TabLayout tabLayout;
 
@@ -95,30 +95,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
-//    class ViewPagerAdapter extends android.support.v4.app.FragmentPagerAdapter {
-//        private final List<android.support.v4.app.Fragment> mFragmentList = new ArrayList<>();
-//        private final List<String> mFragmentTitleList = new ArrayList<>();
-//        public ViewPagerAdapter(android.support.v4.app.FragmentManager manager) {
-//            super(manager);
-//        }
-//        @Override
-//        public android.support.v4.app.Fragment getItem(int position) {
-//            return mFragmentList.get(position);
-//        }
-//        @Override
-//        public int getCount() {
-//            return mFragmentList.size();
-//        }
-//        public void addFrag(android.support.v4.app.Fragment fragment, String title) {
-//            mFragmentList.add(fragment);
-//            mFragmentTitleList.add(title);
-//        }
-//        @Override
-//        public CharSequence getPageTitle(int position) {
-//            return mFragmentTitleList.get(position);
-//        }
-//    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
