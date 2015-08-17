@@ -8,4 +8,8 @@
         android:orderInCategory="100" app:showAsAction="never" />
     <item android:id="@+id/action_test2" android:title="Test2Activity"
         android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_test3" android:title="Test3Activity"
+        android:orderInCategory="100" app:showAsAction="never" />
+    <item android:id="@+id/action_preset" android:title="PresetActivity"
+        android:orderInCategory="100" app:showAsAction="never" />
 </menu>

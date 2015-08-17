@@ -15,6 +15,8 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import edu.handong.design.knockknock.R;
+import edu.handong.design.knockknock.util.BitmapUtil;
+import edu.handong.design.knockknock.util.Logger;
 
 
 /**
@@ -310,7 +312,16 @@ public class ProgressWheel extends View {
             canvas.drawText(s, this.getWidth() / 2 - horizontalTextOffset,
                     this.getHeight() / 2 + verticalTextOffset, textPaint);
         }
-        canvas.drawBitmap(bitmapImage, 0, 0, null);
+        double width = getWidth();
+        double height = getHeight();
+        double scaleFactor = 0.57;
+        Bitmap bit = BitmapUtil.decodeInSampleSize(bitmapImage,(int)(width*scaleFactor), (int)(height*scaleFactor));
+//        bitmapImage.setWidth((int)(width*scaleFactor));
+//        bitmapImage.setHeight((int)(height*scaleFactor));
+        int myWidth = (getWidth()-bit.getWidth())/2;
+        int myHeight= (getHeight() - bit.getHeight())/2;
+        canvas.drawBitmap(bit, myWidth, myHeight, null);
+//        Logger.log(bitmapImage.getWidth());
         if (isSpinning) {
             scheduleRedraw();
         }

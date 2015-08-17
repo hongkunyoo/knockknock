@@ -21,5 +21,7 @@
     <string name="drawer_open">Open</string>
     <string name="drawer_close">Close</string>
     <string name="title_activity_test_activity2">TestActivity2</string>
+    <string name="title_activity_test_activity3">TestActivity3</string>
+    <string name="title_activity_preset_tab">PresetTabActivity</string>
 
 </resources>
