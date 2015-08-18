@@ -16,6 +16,7 @@ import com.todddavies.components.progressbar.ProgressWheel;
 
 import cn.pedant.SweetAlert.SweetAlertDialog;
 import edu.handong.design.knockknock.R;
+import edu.handong.design.knockknock.activity.HouseWorkAddActivity;
 import edu.handong.design.knockknock.activity.MainActivity;
 import edu.handong.design.knockknock.activity.TestActivity;
 import edu.handong.design.knockknock.view.CustomSweetAlertDialog;
@@ -101,11 +102,17 @@ public class HouseWorkFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                startActivity(new Intent(getActivity(), TestActivity.class));
+                startActivity(new Intent(getActivity(), HouseWorkAddActivity.class));
 //                getActivity().overridePendingTransition(R.anim.bottom_in, R.anim.top_out);
             }
         });
+        if (flag) {
+            startActivity(new Intent(getActivity(), HouseWorkAddActivity.class));
+            flag =false;
+        }
+
     }
+    private boolean flag = true;
 
 //    // TODO: Rename method, update argument and hook method into UI event
 //    public void onButtonPressed(Uri uri) {

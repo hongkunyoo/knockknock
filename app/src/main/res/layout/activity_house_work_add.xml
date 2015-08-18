@@ -1,0 +1,184 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/app_bar"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/tabanim_toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+    </android.support.design.widget.AppBarLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="60dp"
+        android:padding="10dp"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="아이콘을 선택해 주세요"/>
+
+        <include
+            layout="@layout/custom_line" />
+
+        <TableLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_alignParentStart="true"
+            >
+
+
+            <TableRow
+                android:gravity="center_horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+
+                <ImageView
+                    android:src="@drawable/hw_icon1_s"
+                    android:id="@+id/hw_id1"
+                    style="@style/hw_add_icon"
+                    />
+                <ImageView
+                    android:src="@drawable/hw_icon2_s"
+                    android:id="@+id/hw_id2"
+                    style="@style/hw_add_icon"
+                    />
+                <ImageView
+                    android:src="@drawable/hw_icon3_s"
+                    android:id="@+id/hw_id3"
+                    style="@style/hw_add_icon"
+                    />
+                <ImageView
+                    android:src="@drawable/hw_icon4_s"
+                    android:id="@+id/hw_id4"
+                    style="@style/hw_add_icon"
+                    />
+            </TableRow>
+            <TableRow
+                android:gravity="center_horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+
+                <ImageView
+                    android:src="@drawable/hw_icon5_s"
+                    android:id="@+id/hw_id5"
+                    style="@style/hw_add_icon"
+                    />
+                <ImageView
+                    android:src="@drawable/hw_icon6_s"
+                    android:id="@+id/hw_id6"
+                    style="@style/hw_add_icon"
+                    />
+                <ImageView
+                    android:src="@drawable/hw_icon7_s"
+                    android:id="@+id/hw_id7"
+                    style="@style/hw_add_icon"
+                    />
+                <ImageView
+                    android:src="@drawable/hw_icon8_s"
+                    android:id="@+id/hw_id8"
+                    style="@style/hw_add_icon"
+                    />
+            </TableRow>
+            <TableRow
+                android:gravity="center_horizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                >
+
+                <ImageView
+                    android:src="@drawable/hw_icon9_s"
+                    android:id="@+id/hw_id9"
+                    style="@style/hw_add_icon"
+                    />
+
+                <ImageView
+                    android:src="@drawable/icon9_wob"
+                    style="@style/hw_add_icon"
+                    />
+                <ImageView
+                    android:src="@drawable/icon9_wob"
+                    style="@style/hw_add_icon"
+                    />
+                <ImageView
+                    android:src="@drawable/icon9_wob"
+                    style="@style/hw_add_icon"
+                    />
+
+
+            </TableRow>
+        </TableLayout>
+
+        <include
+            layout="@layout/custom_line" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+            <ImageView
+                android:src="@drawable/hw_detail1_s"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/hw_detail_iv1"
+                />
+            <ImageView
+                android:src="@drawable/hw_detail2_s"
+                android:layout_width="160dp"
+                android:layout_height="wrap_content"
+                android:id="@+id/hw_detail_iv2"
+                />
+        </LinearLayout>
+
+        <include
+            layout="@layout/custom_line" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:orientation="horizontal">
+            <ImageView
+                android:src="@drawable/pen"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edit_text_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textEmailAddress"
+                    android:hint="할 일의 이름을 입력해 주세요" />
+
+            </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

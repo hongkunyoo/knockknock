@@ -3,8 +3,6 @@
 
     <string name="app_name">KnockKnock</string>
     <string name="remove_message">삭제하시겠습니까?</string>
-
-
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
@@ -26,5 +24,6 @@
     <string name="title_activity_test_activity2">TestActivity2</string>
     <string name="title_activity_test_activity3">TestActivity3</string>
     <string name="title_activity_preset_tab">PresetTabActivity</string>
+    <string name="title_activity_house_work_add">HouseWorkAddActivity</string>
 
 </resources>

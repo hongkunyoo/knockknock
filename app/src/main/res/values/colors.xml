@@ -19,6 +19,7 @@
 
 
     <color name="window_background">#CC000000</color>
+    <color name="line_color">#CCD1D1D1</color>
 
 
     <!--<color name="my_primary">@color/knock_red</color>-->

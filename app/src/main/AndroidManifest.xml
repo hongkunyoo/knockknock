@@ -50,6 +50,14 @@
             android:name=".activity.PresetTabActivity"
             android:label="@string/title_activity_preset_tab" >
         </activity>
+        <activity
+            android:name=".activity.HouseWorkAddActivity"
+            android:label="@string/title_activity_house_work_add"
+            android:parentActivityName=".activity.MainActivity" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="edu.handong.design.knockknock.activity.MainActivity" />
+        </activity>
     </application>
 
 </manifest>
