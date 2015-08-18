@@ -30,7 +30,7 @@
         <item name="colorAccent">@color/color_accent</item>
 
         <!-- Title Text Color -->
-        <item name="android:textColorPrimary">@color/color_primary_text</item>
+        <item name="android:textColorPrimary">@android:color/black</item>
 
         <!-- color of the menu overflow icon (three vertical dots) -->
         <item name="android:textColorSecondary">@color/color_secondary_text</item>
@@ -112,8 +112,8 @@
     </style>
 
     <style name="hw_add_icon">
-        <item name="android:layout_width">70dp</item>
-        <item name="android:layout_height">70dp</item>
+        <item name="android:layout_width">68dp</item>
+        <item name="android:layout_height">68dp</item>
         <item name="android:padding">10dp</item>
         <item name="android:layout_centerInParent">true</item>
 

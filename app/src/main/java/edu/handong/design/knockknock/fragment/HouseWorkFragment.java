@@ -11,6 +11,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 
 import com.todddavies.components.progressbar.ProgressWheel;
 
@@ -19,6 +20,7 @@ import edu.handong.design.knockknock.R;
 import edu.handong.design.knockknock.activity.HouseWorkAddActivity;
 import edu.handong.design.knockknock.activity.MainActivity;
 import edu.handong.design.knockknock.activity.TestActivity;
+import edu.handong.design.knockknock.util.Logger;
 import edu.handong.design.knockknock.view.CustomSweetAlertDialog;
 
 /**
@@ -40,6 +42,7 @@ public class HouseWorkFragment extends Fragment {
     private String mParam2;
 
     private FloatingActionButton fab;
+    private ImageButton addBtn;
     public static HouseWorkFragment newInstance(String param1, String param2) {
         HouseWorkFragment fragment = new HouseWorkFragment();
         Bundle args = new Bundle();
@@ -57,12 +60,10 @@ public class HouseWorkFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-
-
+//        if (getArguments() != null) {
+//            mParam1 = getArguments().getString(ARG_PARAM1);
+//            mParam2 = getArguments().getString(ARG_PARAM2);
+//        }
     }
 
     @Override
@@ -74,14 +75,13 @@ public class HouseWorkFragment extends Fragment {
 
         setView(view);
         setBinding();
-
         return view;
     }
 
     private void setView(View view) {
         fab = (FloatingActionButton)view.findViewById(R.id.house_work_fab);
-
-        ProgressWheel pw = (ProgressWheel)view.findViewById(R.id.icon1_wob_id);
+//        addBtn = (ImageButton) view.findViewById(R.id.house_work_fab);
+//        ProgressWheel pw = (ProgressWheel)view.findViewById(R.id.icon1_wob_id);
 
 //        pw.setProgress(60);
 //
@@ -103,54 +103,14 @@ public class HouseWorkFragment extends Fragment {
             public void onClick(View v) {
 
                 startActivity(new Intent(getActivity(), HouseWorkAddActivity.class));
-//                getActivity().overridePendingTransition(R.anim.bottom_in, R.anim.top_out);
+                getActivity().overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
             }
         });
         if (flag) {
-            startActivity(new Intent(getActivity(), HouseWorkAddActivity.class));
+//            startActivity(new Intent(getActivity(), HouseWorkAddActivity.class));
             flag =false;
         }
 
     }
     private boolean flag = true;
-
-//    // TODO: Rename method, update argument and hook method into UI event
-//    public void onButtonPressed(Uri uri) {
-//        if (mListener != null) {
-//            mListener.onFragmentInteraction(uri);
-//        }
-//    }
-//
-//    @Override
-//    public void onAttach(Activity activity) {
-//        super.onAttach(activity);
-//        try {
-//            mListener = (OnFragmentInteractionListener) activity;
-//        } catch (ClassCastException e) {
-//            throw new ClassCastException(activity.toString()
-//                    + " must implement OnFragmentInteractionListener");
-//        }
-//    }
-//
-//    @Override
-//    public void onDetach() {
-//        super.onDetach();
-//        mListener = null;
-//    }
-//
-//    /**
-//     * This interface must be implemented by activities that contain this
-//     * fragment to allow an interaction in this fragment to be communicated
-//     * to the activity and potentially other fragments contained in that
-//     * activity.
-//     * <p/>
-//     * See the Android Training lesson <a href=
-//     * "http://developer.android.com/training/basics/fragments/communicating.html"
-//     * >Communicating with Other Fragments</a> for more information.
-//     */
-//    public interface OnFragmentInteractionListener {
-//        // TODO: Update argument type and name
-//        public void onFragmentInteraction(Uri uri);
-//    }
-
 }

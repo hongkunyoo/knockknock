@@ -22,21 +22,16 @@
         android:layout_below="@+id/imageView2"
         >
 
-
         <TableRow
             android:gravity="center_horizontal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent">
-
-
             <com.todddavies.components.progressbar.ProgressWheel
-
                 ProgressWheel:image="@drawable/icon1_wob"
                 android:id="@+id/icon1_wob_id"
                 style="@style/kProgressWheel"
                  />
             <com.todddavies.components.progressbar.ProgressWheel
-
                 ProgressWheel:image="@drawable/icon2_wob"
                 style="@style/kProgressWheel"
                 />
@@ -48,7 +43,6 @@
                 android:gravity="center_horizontal"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
-
                 <com.todddavies.components.progressbar.ProgressWheel
                     ProgressWheel:image="@drawable/icon4_wob"
                     style="@style/kProgressWheel" />
@@ -62,9 +56,7 @@
             <TableRow
                 android:gravity="center_horizontal"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                >
-
+                android:layout_height="wrap_content">
                 <com.todddavies.components.progressbar.ProgressWheel
                     ProgressWheel:image="@drawable/icon7_wob"
 
@@ -75,9 +67,7 @@
                     style="@style/kProgressWheel" />
                 <com.todddavies.components.progressbar.ProgressWheel
                     ProgressWheel:image="@drawable/icon9_wob"
-
                     style="@style/kProgressWheel" />
-
             </TableRow>
         </TableLayout>
 
@@ -86,13 +76,17 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/plus"
-            style="@style/FloatingActionButtonBlue"
             android:layout_marginBottom="60dp"
             android:layout_marginRight="5dp"
+            style="@style/FloatingActionButtonBlue"
             app:layout_anchorGravity="bottom|right|end"
             android:layout_alignParentBottom="true"
             android:layout_alignParentRight="true"
-            app:fabSize="normal" />
+            app:fabSize="normal"
+            app:rippleColor="@android:color/white"
+            app:pressedTranslationZ="12dp"
+            app:borderWidth="0dp"
+            />
 
 
     </RelativeLayout>

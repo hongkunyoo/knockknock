@@ -16,7 +16,7 @@
     <color name="color_secondary_text">@color/knock_white</color>
     <color name="color_icons">@color/knock_white</color>
     <color name="color_divider">@color/knock_red</color>
-
+    <color name="my_transparent">@android:color/transparent</color>
 
     <color name="window_background">#CC000000</color>
     <color name="line_color">#CCD1D1D1</color>

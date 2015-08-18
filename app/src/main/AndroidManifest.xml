@@ -7,10 +7,10 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/kapp_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme"
-        tools:replace="android:label, theme" >
+        tools:replace="android:label, theme, icon" >
         <activity
             android:name=".activity.SplashActivity"
             android:configChanges="orientation|keyboardHidden|screenSize"

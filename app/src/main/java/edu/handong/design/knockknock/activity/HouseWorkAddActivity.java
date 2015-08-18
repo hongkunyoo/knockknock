@@ -23,6 +23,7 @@ public class HouseWorkAddActivity extends ActionBarActivity {
     ImageView iv7;
     ImageView iv8;
     ImageView iv9;
+    ImageView doneBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,23 +51,10 @@ public class HouseWorkAddActivity extends ActionBarActivity {
 
         detail_iv1 = (ImageView) findViewById(R.id.hw_detail_iv1);
         detail_iv2 = (ImageView) findViewById(R.id.hw_detail_iv2);
-
+        doneBtn = (ImageView) findViewById(R.id.hw_done_btn);
     }
 
     private void setBinding() {
-
-
-//        iv1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (iv1.isSelected()) {
-//                    iv1.setSelected(false);
-//                } else {
-//                    iv1.setSelected(true);
-//                }
-//            }
-//        });
-//        setClick(iv1);
 
         for (ImageView iv : imArr) {
             setClick(iv);
@@ -75,6 +63,14 @@ public class HouseWorkAddActivity extends ActionBarActivity {
         setClickDetail(detail_iv1);
         setClickDetail(detail_iv2);
         detail_iv1.setSelected(true);
+
+        doneBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+                overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
+            }
+        });
     }
 
     private void setClick(final ImageView view) {
@@ -95,8 +91,10 @@ public class HouseWorkAddActivity extends ActionBarActivity {
             public void onClick(View v) {
                 if (view.getId() == detail_iv1.getId()) {
                     detail_iv2.setSelected(false);
+                    detail_iv1.setSelected(true);
                 } else if (view.getId() == detail_iv2.getId()) {
                     detail_iv1.setSelected(false);
+                    detail_iv2.setSelected(true);
                 }
             }
         });

@@ -156,14 +156,15 @@
             layout="@layout/custom_line" />
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-
+            android:padding="8dp"
             android:orientation="horizontal">
             <ImageView
                 android:src="@drawable/pen"
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="10dp"
                 />
             <android.support.design.widget.TextInputLayout
                 android:layout_width="match_parent"
@@ -173,12 +174,57 @@
                     android:id="@+id/edit_text_email"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
+                    android:inputType="text"
                     android:hint="할 일의 이름을 입력해 주세요" />
 
             </android.support.design.widget.TextInputLayout>
         </LinearLayout>
 
-    </LinearLayout>
+        <include
+            layout="@layout/custom_line" />
 
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:orientation="horizontal">
+            <ImageView
+                android:src="@drawable/cal"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="10dp"
+                />
+            <android.support.design.widget.TextInputLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <EditText
+                    android:id="@+id/edit_text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text"
+                    android:hint="반복 주기를 입력해 주세요" />
+
+            </android.support.design.widget.TextInputLayout>
+            <TextView
+                android:layout_width="300dp"
+                android:layout_gravity="center"
+                android:textSize="20sp"
+                android:layout_height="wrap_content"
+                android:text="일 마다 반복"/>
+        </LinearLayout>
+
+        <include
+            layout="@layout/custom_line" />
+
+        <ImageView
+            android:src="@drawable/okay"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="15dp"
+            android:layout_gravity="center"
+            android:id="@+id/hw_done_btn"
+            />
+
+    </LinearLayout>
 </RelativeLayout>

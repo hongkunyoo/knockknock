@@ -1,17 +1,108 @@
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context="edu.handong.design.knockknock.fragment.HomeFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView android:layout_width="match_parent" android:layout_height="match_parent"
-        android:text="home" />
+    <ImageView
+        android:layout_width="330dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/imageView2"
+        android:src="@drawable/notice02"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
     <ImageView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@drawable/ic_launcher"
-        android:layout_gravity="center_horizontal|top" />
+        android:layout_height="370dp"
+        android:layout_marginTop="5dp"
+        android:src="@drawable/home_bg_big"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignParentStart="true"
+        android:id="@+id/imageView" />
 
-</FrameLayout>
+    <ImageView
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/myroom_red"
+        android:id="@+id/myroom_id"
+        android:layout_marginRight="27dp"
+        android:layout_marginTop="173dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true" />
+
+
+    <ImageButton
+        android:id="@+id/btn0101"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        android:src="@drawable/h_no_dist_s"
+        android:layout_marginTop="97dp"
+        android:layout_marginLeft="25dp"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        android:src="@drawable/h_no_room_s"
+        android:layout_marginTop="97dp"
+        android:layout_marginLeft="80dp"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_alignLeft="@+id/btn0101"
+
+        android:id="@+id/imageView4" />
+
+
+    <ImageButton
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        android:src="@drawable/h_freemode_s"
+        android:layout_marginRight="45dp"
+        android:layout_marginTop="97dp"
+        android:id="@+id/imageView5"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_alignParentEnd="true" />
+
+
+    <ImageButton
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        android:src="@drawable/h_question_mark"
+        android:layout_marginTop="230dp"
+        android:layout_marginLeft="70dp"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_alignLeft="@+id/btn0101"
+         />
+
+    <ImageButton
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:scaleType="fitCenter"
+        android:background="@android:color/transparent"
+        android:src="@drawable/h_freemode_s"
+        android:layout_marginRight="53dp"
+        android:layout_marginTop="230dp"
+        android:id="@+id/imageView6"
+        android:layout_alignTop="@+id/imageView"
+        android:layout_alignParentEnd="true" />
+
+    <FrameLayout
+        android:orientation="vertical"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_alignBottom="@+id/myroom_id"
+        android:id="@+id/linear_layout_id"
+        android:layout_centerHorizontal="true"></FrameLayout>
+
+
+</RelativeLayout>

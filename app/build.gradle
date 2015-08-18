@@ -35,5 +35,20 @@ dependencies {
     compile 'com.android.support:recyclerview-v7:21.0.0'
     compile "com.daimajia.swipelayout:library:1.2.0@aar"
     compile 'cn.pedant.sweetalert:library:1.3'
-
+    compile 'com.oguzdev:CircularFloatingActionMenu:1.0.2'
 }
+
+// Run app with install
+//task run(type: Exec) {
+//    def rootDir = project.rootDir
+//    def localProperties = new File(rootDir, 'local.properties')
+//    if (localProperties.exists()) {
+//        Properties properties = new Properties()
+//        localProperties.withInputStream {
+//            instr -> properties.load(instr)
+//        }
+//        def dir = properties.getProperty('sdk.dir')
+//        def adb = "$dir/platform-tools/adb"
+//        commandLine "$adb", 'shell', 'am', 'start', '-n', 'kr.co.rememberapp/.activity.home.SplashActivity_'
+//    }
+//}
