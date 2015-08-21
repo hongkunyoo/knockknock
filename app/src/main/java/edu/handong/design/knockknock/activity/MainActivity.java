@@ -1,6 +1,7 @@
 package edu.handong.design.knockknock.activity;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
@@ -14,6 +15,8 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
@@ -30,6 +33,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -40,6 +45,8 @@ import edu.handong.design.knockknock.adapter.kViewPagerAdapter;
 import edu.handong.design.knockknock.fragment.HomeFragment;
 import edu.handong.design.knockknock.fragment.HouseWorkFragment;
 import edu.handong.design.knockknock.fragment.MoneyFragment;
+import edu.handong.design.knockknock.fragment.ShoppingFragment;
+import edu.handong.design.knockknock.util.BitmapUtil;
 import edu.handong.design.knockknock.util.Logger;
 import edu.handong.design.knockknock.view.CircleImageView;
 
@@ -54,23 +61,47 @@ public class MainActivity extends AppCompatActivity {
     ViewPager viewPager;
     TabLayout tabLayout;
 
+    public static HashMap<Bitmap, Bitmap> resizeImageMap = new HashMap<>();
+
+    public static Bitmap getBitmap(Bitmap key, int _width, int _height) {
+        Bitmap retBit = resizeImageMap.get(key);
+        if (retBit == null) {
+            double width = _width;
+            double height = _height;
+            double scaleFactor = 0.57;
+            Bitmap bit;
+            Bitmap bitmapImage = key;
+
+            bit = BitmapUtil.decodeInSampleSize(bitmapImage, (int) (width * scaleFactor), (int) (height * scaleFactor));
+            resizeImageMap.put(bitmapImage, bit);
+            retBit = bit;
+        }
+        return retBit;
+    }
+
+    private int[] iconArr = new int[]{R.drawable.icon1_wob, R.drawable.icon2_wob, R.drawable.icon3_wob,
+            R.drawable.icon4_wob, R.drawable.icon5_wob, R.drawable.icon6_wob, R.drawable.icon7_wob,
+            R.drawable.icon8_wob, R.drawable.icon9_wob};
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         context = this;
-        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.tabanim_toolbar);
+        android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.tab_anim_toolbar);
         setSupportActionBar(toolbar);
-        viewPager = (ViewPager) findViewById(R.id.tabanim_viewpager);
-        tabLayout = (TabLayout) findViewById(R.id.tabanim_tabs);
+        viewPager = (ViewPager) findViewById(R.id.tab_anim_viewpager);
+        tabLayout = (TabLayout) findViewById(R.id.tab_anim_tabs);
 
         setupViewPager(viewPager);
 
 
-
         tabLayout.setBackgroundColor(getResources().getColor(R.color.knock_white));
 
-
+//        CollapsingToolbarLayout collapsingToolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+//        if(collapsingToolbarLayout != null) {
+//            collapsingToolbarLayout.setTitle(toolbar.getTitle());
+//        }
 
     }
 
@@ -81,7 +112,7 @@ public class MainActivity extends AppCompatActivity {
         adapter.addFrag(new HouseWorkFragment(), getResources().getDrawable(R.drawable.page01_icon));
         adapter.addFrag(new HomeFragment(), getResources().getDrawable(R.drawable.page02_icon));
         adapter.addFrag(new MoneyFragment(), getResources().getDrawable(R.drawable.page03_icon));
-        adapter.addFrag(new MoneyFragment(), getResources().getDrawable(R.drawable.page04_icon));
+        adapter.addFrag(new ShoppingFragment(), getResources().getDrawable(R.drawable.page04_icon));
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
@@ -90,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             tab.setCustomView(adapter.getTabView(i));
         }
 
-        tabLayout.getTabAt(1).select();
+        tabLayout.getTabAt(2).select();
 
     }
 

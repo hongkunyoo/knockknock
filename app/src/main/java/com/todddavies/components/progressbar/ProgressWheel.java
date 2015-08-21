@@ -15,6 +15,7 @@ import android.util.AttributeSet;
 import android.view.View;
 
 import edu.handong.design.knockknock.R;
+import edu.handong.design.knockknock.activity.MainActivity;
 import edu.handong.design.knockknock.util.BitmapUtil;
 import edu.handong.design.knockknock.util.Logger;
 
@@ -81,6 +82,8 @@ public class ProgressWheel extends View {
 
     private BitmapDrawable image;
     private Bitmap bitmapImage;
+
+    Bitmap bit;
 
     /**
      * The constructor for the ProgressWheel
@@ -192,6 +195,13 @@ public class ProgressWheel extends View {
         contourPaint.setAntiAlias(true);
         contourPaint.setStyle(Style.STROKE);
         contourPaint.setStrokeWidth(contourSize);
+
+//        double width = getWidth();
+//        double height = getHeight();
+//        double scaleFactor = 0.57;
+//        bit = BitmapUtil.decodeInSampleSize(bitmapImage,(int)(width*scaleFactor), (int)(height*scaleFactor));
+        bit = MainActivity.getBitmap(bitmapImage, getWidth(), getHeight());
+
     }
 
     /**
@@ -264,7 +274,6 @@ public class ProgressWheel extends View {
 
         image = (BitmapDrawable) a.getDrawable(R.styleable.ProgressWheel_image);
         bitmapImage = image.getBitmap();
-
         //if the text is empty , so ignore it
         if (a.hasValue(R.styleable.ProgressWheel_text)) {
             setText(a.getString(R.styleable.ProgressWheel_text));
@@ -278,8 +287,6 @@ public class ProgressWheel extends View {
 
         contourColor = a.getColor(R.styleable.ProgressWheel_contourColor, contourColor);
         contourSize = a.getDimension(R.styleable.ProgressWheel_contourSize, contourSize);
-
-
         // Recycle
         a.recycle();
     }
@@ -307,24 +314,23 @@ public class ProgressWheel extends View {
         float textHeight = textPaint.descent() - textPaint.ascent();
         float verticalTextOffset = (textHeight / 2) - textPaint.descent();
 
-        for (String s : splitText) {
-            float horizontalTextOffset = textPaint.measureText(s) / 2;
-            canvas.drawText(s, this.getWidth() / 2 - horizontalTextOffset,
-                    this.getHeight() / 2 + verticalTextOffset, textPaint);
-        }
-        double width = getWidth();
-        double height = getHeight();
-        double scaleFactor = 0.57;
-        Bitmap bit = BitmapUtil.decodeInSampleSize(bitmapImage,(int)(width*scaleFactor), (int)(height*scaleFactor));
+//        for (String s : splitText) {
+//            float horizontalTextOffset = textPaint.measureText(s) / 2;
+//            canvas.drawText(s, this.getWidth() / 2 - horizontalTextOffset,
+//                    this.getHeight() / 2 + verticalTextOffset, textPaint);
+//        }
+
+//        Bitmap bit = bitmapImage;
+
 //        bitmapImage.setWidth((int)(width*scaleFactor));
 //        bitmapImage.setHeight((int)(height*scaleFactor));
         int myWidth = (getWidth()-bit.getWidth())/2;
         int myHeight= (getHeight() - bit.getHeight())/2;
         canvas.drawBitmap(bit, myWidth, myHeight, null);
 //        Logger.log(bitmapImage.getWidth());
-        if (isSpinning) {
-            scheduleRedraw();
-        }
+//        if (isSpinning) {
+//            scheduleRedraw();
+//        }
     }
 
     private void scheduleRedraw() {

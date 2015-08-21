@@ -1,34 +1,31 @@
 package edu.handong.design.knockknock.fragment;
 
-import android.animation.Animator;
-import android.animation.AnimatorSet;
-import android.animation.ObjectAnimator;
-import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.drawable.Animatable;
-import android.graphics.drawable.BitmapDrawable;
+import android.app.Dialog;
+import android.app.DialogFragment;
+import android.app.FragmentManager;
+import android.app.ProgressDialog;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.internal.widget.ContentFrameLayout;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
+import android.view.WindowManager;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 import edu.handong.design.knockknock.R;
-import edu.handong.design.knockknock.util.Logger;
-import edu.handong.design.knockknock.view.BlurBuilder;
-import edu.handong.design.knockknock.view.SlideInAnimationHandler;
+import edu.handong.design.knockknock.activity.MainActivity;
 
 
 public class HomeFragment extends Fragment {
@@ -42,6 +39,7 @@ public class HomeFragment extends Fragment {
     private String mParam2;
 
     private ImageView myRoom;
+    private ImageButton myState;
 
     private ImageButton fab;
 
@@ -53,7 +51,15 @@ public class HomeFragment extends Fragment {
     private float offset2;
     private float offset3;
 
-    private boolean expanded = false;
+    private SubActionButton[] subActionButtons = new SubActionButton[4];
+    private int[] subButtonImages = new int[] {R.drawable.h_freemode_s, R.drawable.h_no_dist_s,
+        R.drawable.h_no_room_s, R.drawable.h_outside_s};
+    private int[] roomImages = new int[] {R.drawable.h_room_freemode, R.drawable.h_room_no_dist,
+        R.drawable.h_room_no_room, R.drawable.h_room_outside};
+
+    private RelativeLayout homeBg;
+    private ImageView dimBg;
+    FrameLayout ll;
 
     public static HomeFragment newInstance(String param1, String param2) {
         HomeFragment fragment = new HomeFragment();
@@ -92,78 +98,28 @@ public class HomeFragment extends Fragment {
 
     private void setView(View view) {
         myRoom = (ImageView) view.findViewById(R.id.myroom_id);
+        myState = (ImageButton) view.findViewById(R.id.my_state);
+        homeBg = (RelativeLayout) view.findViewById(R.id.frag_home_bg_id);
+        dimBg = (ImageView) view.findViewById(R.id.dim_bg_id);
 
-
-//        icon.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                icon.setSelected(true);
-//            }
-//        });
-//        actionButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                icon.setSelected(true);
-//            }
-//        });
-
-//        final ViewGroup fabContainer = (ViewGroup) view.findViewById(R.id.fab_container);
-//        fab = (ImageButton) view.findViewById(R.id.fab);
-//        fabAction1 = view.findViewById(R.id.fab_action_1);
-//        fabAction2 = view.findViewById(R.id.fab_action_2);
-//        fabAction3 = view.findViewById(R.id.fab_action_3);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                expanded = !expanded;
-//                if (expanded) {
-//                    expandFab();
-//                } else {
-//                    collapseFab();
-//                }
-//            }
-//        });
-//        fabContainer.getViewTreeObserver().addOnPreDrawListener(new ViewTreeObserver.OnPreDrawListener() {
-//            @Override
-//            public boolean onPreDraw() {
-//                fabContainer.getViewTreeObserver().removeOnPreDrawListener(this);
-//                offset1 = fab.getY() - fabAction1.getY();
-//                fabAction1.setTranslationY(offset1);
-//                offset2 = fab.getY() - fabAction2.getY();
-//                fabAction2.setTranslationY(offset2);
-//                offset3 = fab.getY() - fabAction3.getY();
-//                fabAction3.setTranslationY(offset3);
-//                return true;
-//            }
-//        });
-//
-//        myRoom.setImageResource(R.drawable.myroom_outside);
         myMenu(view);
-//        setCustomAnimation();
     }
 
     private void myMenu(View view) {
         final ImageView icon = new ImageView(getActivity()); // Create an icon
-        icon.setImageResource(R.drawable.h_mode2);
+        icon.setImageResource(R.drawable.h_mode_s);
 
-        FrameLayout ll = (FrameLayout) view.findViewById(R.id.linear_layout_id);
+        ll = (FrameLayout) view.findViewById(R.id.linear_layout_id);
 
-
-        com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton actionButton = new com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton.Builder(getActivity())
-//                .setContentView(icon)
+        final com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton actionButton = new com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton.Builder(getActivity())
                 .setContentView(icon)
                 .build();
 
-
         ViewGroup parent = (ViewGroup) actionButton.getParent();
-//        int index = parent.indexOfChild(actionButton);
-        Logger.log(parent, parent.getClass(), parent.getLayoutParams());
         parent.removeView(actionButton);
 
         ll.addView(actionButton);
-//        parent.addView(C, index);
 
-//        icon.setPadding(0,0,0,0);
 
         FloatingActionButton.LayoutParams starParams = new FloatingActionButton.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
 
@@ -175,155 +131,95 @@ public class HomeFragment extends Fragment {
         actionButton.setPosition(FloatingActionButton.POSITION_BOTTOM_CENTER, starParams);
         actionButton.setBackgroundResource(R.color.my_transparent);
 
-        SubActionButton.Builder itemBuilder = new SubActionButton.Builder(getActivity());
-        // repeat many times:
-        ImageView itemIcon = new ImageView(getActivity());
-        itemIcon.setImageResource(R.drawable.h_freemode2);
-        SubActionButton button1 = itemBuilder.setContentView(itemIcon).build();
-        button1.setLayoutParams(starParams);
-        button1.setBackgroundResource(R.color.my_transparent);
-
-        itemIcon = new ImageView(getActivity());
-        itemIcon.setImageResource(R.drawable.h_no_dist2);
-        SubActionButton button2 = itemBuilder.setContentView(itemIcon).build();
-        button2.setLayoutParams(starParams);
-        button2.setBackgroundResource(R.color.my_transparent);
-
-        itemIcon = new ImageView(getActivity());
-        itemIcon.setImageResource(R.drawable.h_no_room2);
-        SubActionButton button3 = itemBuilder.setContentView(itemIcon).build();
-        button3.setLayoutParams(starParams);
-        button3.setBackgroundResource(R.color.my_transparent);
-
-        itemIcon = new ImageView(getActivity());
-        itemIcon.setImageResource(R.drawable.h_outside2);
-        SubActionButton button4 = itemBuilder.setContentView(itemIcon).build();
-        button4.setLayoutParams(starParams);
-        button4.setBackgroundResource(R.color.my_transparent);
 
 
-        FloatingActionMenu actionMenu = new FloatingActionMenu.Builder(getActivity())
-                .addSubActionView(button1)
-                .addSubActionView(button2)
-                .addSubActionView(button3)
-                .addSubActionView(button4)
-                .attachTo(actionButton)
+        for (int i = 0 ; i < subButtonImages.length ; i++) {
+            SubActionButton.Builder itemBuilder = new SubActionButton.Builder(getActivity());
+            // repeat many times:
+            ImageView itemIcon = new ImageView(getActivity());
+            itemIcon.setImageResource(subButtonImages[i]);
+            subActionButtons[i] = itemBuilder.setContentView(itemIcon).build();
+            subActionButtons[i].setLayoutParams(starParams);
+            subActionButtons[i].setBackgroundResource(R.color.my_transparent);
+
+        }
+
+        final FloatingActionMenu.Builder actionMenuBuilder = new FloatingActionMenu.Builder(getActivity());
+
+        actionMenuBuilder.attachTo(actionButton)
                 .setStartAngle(210)
                 .setEndAngle(330)
-                .setRadius(400)
-                .build();
+                .setRadius(400);
+
+        for (int i = 0 ; i < subActionButtons.length ; i++) {
+            actionMenuBuilder.addSubActionView(subActionButtons[i]);
+        }
+
+        final FloatingActionMenu actionMenu = actionMenuBuilder.build();
+
+        actionMenu.setStateChangeListener(new FloatingActionMenu.MenuStateChangeListener() {
+            @Override
+            public void onMenuOpened(FloatingActionMenu floatingActionMenu) {
+//                MainActivity ma = (MainActivity)getActivity();
+//                ma.makeDim();
+
+                dimBg.setVisibility(View.VISIBLE);
+                dimBg.setZ(90);
 
 
-//        actionMenu.getActivityContentView().getParent()
+                ll.setZ(100);
+                ll.bringToFront();
+//                FrameLayout dimLayout = ma.getDimLayout();
+
+//                ViewGroup parent = (ViewGroup) actionButton.getParent();
+//                parent.removeView(actionButton);
+
+//                dimLayout.addView(actionButton);
+
+//                actionMenu.getActivityContentView().bringToFront();
+//                actionMenu.getActivityContentView().setZ(100);
+//                actionButton.setZ(100);
+//                actionButton.bringToFront();
+//
+//                icon.bringToFront();
+//                icon.setZ(100);
+
+//                ViewGroup parent = (ViewGroup) actionButton.getParent();
+//                parent.removeView(actionButton);
+//
+//                ll.addView(actionButton);
+            }
+
+
+            @Override
+            public void onMenuClosed(FloatingActionMenu floatingActionMenu) {
+//                MainActivity ma = (MainActivity)getActivity();
+//                ma.dismissDim();
+                dimBg.setVisibility(View.GONE);
+
+//                ViewGroup parent = (ViewGroup) actionButton.getParent();
+//                parent.removeView(actionButton);
+//
+//                ll.addView(actionButton);
+            }
+        });
+
+
+        for (int i = 0 ; i < roomImages.length ; i++) {
+            final int j = i;
+            subActionButtons[i].setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    myRoom.setImageResource(roomImages[j]);
+                    myState.setImageResource(subButtonImages[j]);
+                    actionMenu.close(true);
+                }
+            });
+        }
 
 
 
-//        Bitmap image = BlurBuilder.blur(view);
-//        getActivity().getWindow().setBackgroundDrawable(new BitmapDrawable(getActivity().getResources(), image));
-
-//        final Activity activity = getActivity();
-//        final View content = activity.findViewById(android.R.id.content).getRootView();
-//        if (content.getWidth() > 0) {
-//            Bitmap image = BlurBuilder.blur(content);
-//            getActivity().getWindow().setBackgroundDrawable(new BitmapDrawable(activity.getResources(), image));
-//        } else {
-//            content.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//                @Override
-//                public void onGlobalLayout() {
-//                    Bitmap image = BlurBuilder.blur(content);
-//                    getActivity().getWindow().setBackgroundDrawable(new BitmapDrawable(activity.getResources(), image));
-//                }
-//            });
-//        }
     }
-
-//    private void setCustomAnimation() {
-//        ImageView fabContent = new ImageView(getActivity());
-//        fabContent.setImageDrawable(getResources().getDrawable(R.drawable.h_mode_s));
-//
-//        FloatingActionButton darkButton = new FloatingActionButton.Builder(getActivity())
-////                .setTheme(FloatingActionButton.THEME_DARK)
-//                .setContentView(fabContent)
-//                .setPosition(FloatingActionButton.POSITION_BOTTOM_CENTER)
-//                .build();
-//
-//        SubActionButton.Builder rLSubBuilder = new SubActionButton.Builder(getActivity());
-////                .setTheme(SubActionButton.THEME_DARK);
-//        ImageView rlIcon1 = new ImageView(getActivity());
-//        ImageView rlIcon2 = new ImageView(getActivity());
-//        ImageView rlIcon3 = new ImageView(getActivity());
-//        ImageView rlIcon4 = new ImageView(getActivity());
-//
-//        rlIcon1.setImageDrawable(getResources().getDrawable(R.drawable.h_freemode_s));
-//        rlIcon2.setImageDrawable(getResources().getDrawable(R.drawable.h_no_dist_s));
-//        rlIcon3.setImageDrawable(getResources().getDrawable(R.drawable.h_no_room_s));
-//        rlIcon4.setImageDrawable(getResources().getDrawable(R.drawable.h_outside_s));
-//
-//        FloatingActionButton.LayoutParams starParams = new FloatingActionButton.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-//
-//        starParams.setMargins(0,
-//                0,
-//                0,
-//                50);
-////        actionButton.setLayoutParams(starParams);
-//
-//        SubActionButton sub1 = rLSubBuilder.setContentView(rlIcon1).build();
-//        sub1.setLayoutParams(starParams);
-//        // Set 4 SubActionButtons
-//        FloatingActionMenu centerBottomMenu = new FloatingActionMenu.Builder(getActivity())
-//                .setStartAngle(210)
-//                .setEndAngle(330)
-////                .setAnimationHandler(new SlideInAnimationHandler())
-//                .addSubActionView(sub1)
-//                .addSubActionView(rLSubBuilder.setContentView(rlIcon2).build())
-//                .addSubActionView(rLSubBuilder.setContentView(rlIcon3).build())
-//                .addSubActionView(rLSubBuilder.setContentView(rlIcon4).build())
-//                .attachTo(darkButton)
-//                .build();
-//    }
-//
-//    private void setBinding() {
-//
-//    }
-//
-//
-//    private void collapseFab() {
-//        fab.setImageResource(R.drawable.h_mode_sel);
-//        AnimatorSet animatorSet = new AnimatorSet();
-//        animatorSet.playTogether(createCollapseAnimator(fabAction1, offset1),
-//                createCollapseAnimator(fabAction2, offset2),
-//                createCollapseAnimator(fabAction3, offset3));
-//        animatorSet.start();
-//        animateFab();
-//    }
-//
-//    private void expandFab() {
-//        fab.setImageResource(R.drawable.h_mode);
-//        AnimatorSet animatorSet = new AnimatorSet();
-//        animatorSet.playTogether(createExpandAnimator(fabAction1, offset1),
-//                createExpandAnimator(fabAction2, offset2),
-//                createExpandAnimator(fabAction3, offset3));
-//        animatorSet.start();
-//        animateFab();
-//    }
-//
-//    private static final String TRANSLATION_Y = "translationY";
-//
-//    private Animator createCollapseAnimator(View view, float offset) {
-//        return ObjectAnimator.ofFloat(view, TRANSLATION_Y, 0, offset)
-//                .setDuration(getResources().getInteger(android.R.integer.config_mediumAnimTime));
-//    }
-//
-//    private Animator createExpandAnimator(View view, float offset) {
-//        return ObjectAnimator.ofFloat(view, TRANSLATION_Y, offset, 0)
-//                .setDuration(getResources().getInteger(android.R.integer.config_mediumAnimTime));
-//    }
-//
-//    private void animateFab() {
-//        Drawable drawable = fab.getDrawable();
-//        if (drawable instanceof Animatable) {
-//            ((Animatable) drawable).start();
-//        }
-//    }
 
 }

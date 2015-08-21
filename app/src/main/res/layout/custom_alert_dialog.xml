@@ -127,26 +127,26 @@
         android:background="@drawable/dialog_background"
         android:padding="5dp">
 
-    <TextView
-        android:id="@+id/title_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="23sp"
-        android:textColor="#575757"
+        <TextView
+            android:id="@+id/title_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="23sp"
+            android:textColor="#575757"
 
-        android:singleLine="true"
-        android:text="@string/remove_message" />
+            android:singleLine="true"
+            android:text="@string/remove_message" />
 
-    <TextView
-        android:id="@+id/content_text"
-        android:layout_marginTop="10dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="14sp"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:textColor="#797979"
-        android:visibility="gone" />
+        <TextView
+            android:id="@+id/content_text"
+            android:layout_marginTop="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="14sp"
+            android:textAlignment="center"
+            android:gravity="center"
+            android:textColor="#797979"
+            android:visibility="gone" />
 
 
     </LinearLayout>

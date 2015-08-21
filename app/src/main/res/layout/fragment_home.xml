@@ -3,7 +3,17 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/frag_home_bg_id"
     tools:context="edu.handong.design.knockknock.fragment.HomeFragment">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:id="@+id/rela_id"
+        android:padding="10dp">
+
+
 
     <ImageView
         android:layout_width="330dp"
@@ -25,7 +35,7 @@
     <ImageView
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/myroom_red"
+        android:src="@drawable/h_room_freemode"
         android:id="@+id/myroom_id"
         android:layout_marginRight="27dp"
         android:layout_marginTop="173dp"
@@ -92,17 +102,32 @@
         android:src="@drawable/h_freemode_s"
         android:layout_marginRight="53dp"
         android:layout_marginTop="230dp"
-        android:id="@+id/imageView6"
+        android:id="@+id/my_state"
         android:layout_alignTop="@+id/imageView"
         android:layout_alignParentEnd="true" />
 
-    <FrameLayout
-        android:orientation="vertical"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignBottom="@+id/myroom_id"
-        android:id="@+id/linear_layout_id"
-        android:layout_centerHorizontal="true"></FrameLayout>
+
+    </RelativeLayout>
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:src="@drawable/dim_bg"
+            android:visibility="gone"
+            android:scaleType="fitXY"
+            android:id="@+id/dim_bg_id"
+            android:fillViewport="true"
+            />
+
+        <FrameLayout
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_marginBottom="10dp"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/linear_layout_id"
+            android:layout_centerHorizontal="true"></FrameLayout>
+
 
 
 </RelativeLayout>
