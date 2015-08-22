@@ -26,5 +26,6 @@
     <string name="title_activity_preset_tab">PresetTabActivity</string>
     <string name="title_activity_house_work_add">HouseWorkAddActivity</string>
     <string name="title_activity_money_add">MoneyAddActivity</string>
+    <string name="title_activity_menu">MenuActivity</string>
 
 </resources>

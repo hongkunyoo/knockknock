@@ -44,7 +44,7 @@
 
 
     <ImageButton
-        android:id="@+id/btn0101"
+        android:id="@+id/h_profile_btn1"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:scaleType="fitCenter"
@@ -56,6 +56,7 @@
         android:layout_alignParentStart="true" />
 
     <ImageButton
+        android:id="@+id/h_profile_btn2"
         android:layout_width="65dp"
         android:layout_height="65dp"
         android:scaleType="fitCenter"
@@ -64,9 +65,8 @@
         android:layout_marginTop="97dp"
         android:layout_marginLeft="80dp"
         android:layout_alignTop="@+id/imageView"
-        android:layout_alignLeft="@+id/btn0101"
-
-        android:id="@+id/imageView4" />
+        android:layout_alignLeft="@+id/h_profile_btn1"
+    />
 
 
     <ImageButton
@@ -75,7 +75,7 @@
         android:scaleType="fitCenter"
         android:background="@android:color/transparent"
         android:src="@drawable/h_freemode_s"
-        android:layout_marginRight="45dp"
+        android:layout_marginRight="42dp"
         android:layout_marginTop="97dp"
         android:id="@+id/imageView5"
         android:layout_alignTop="@+id/imageView"
@@ -89,9 +89,9 @@
         android:background="@android:color/transparent"
         android:src="@drawable/h_question_mark"
         android:layout_marginTop="230dp"
-        android:layout_marginLeft="70dp"
+        android:layout_marginLeft="60dp"
         android:layout_alignTop="@+id/imageView"
-        android:layout_alignLeft="@+id/btn0101"
+        android:layout_alignLeft="@+id/h_profile_btn1"
          />
 
     <ImageButton
@@ -123,7 +123,7 @@
             android:orientation="vertical"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_marginBottom="10dp"
+            android:layout_marginBottom="8dp"
             android:layout_alignParentBottom="true"
             android:id="@+id/linear_layout_id"
             android:layout_centerHorizontal="true"></FrameLayout>

@@ -26,6 +26,7 @@ import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 import edu.handong.design.knockknock.R;
 import edu.handong.design.knockknock.activity.MainActivity;
+import edu.handong.design.knockknock.view.CustomImageDialog;
 
 
 public class HomeFragment extends Fragment {
@@ -43,13 +44,8 @@ public class HomeFragment extends Fragment {
 
     private ImageButton fab;
 
-    private View fabAction1;
-    private View fabAction2;
-    private View fabAction3;
-
-    private float offset1;
-    private float offset2;
-    private float offset3;
+    private ImageButton profileBtn1;
+    private ImageButton profileBtn2;
 
     private SubActionButton[] subActionButtons = new SubActionButton[4];
     private int[] subButtonImages = new int[] {R.drawable.h_freemode_s, R.drawable.h_no_dist_s,
@@ -102,7 +98,24 @@ public class HomeFragment extends Fragment {
         homeBg = (RelativeLayout) view.findViewById(R.id.frag_home_bg_id);
         dimBg = (ImageView) view.findViewById(R.id.dim_bg_id);
 
+        profileBtn1 = (ImageButton) view.findViewById(R.id.h_profile_btn1);
+        profileBtn2 = (ImageButton) view.findViewById(R.id.h_profile_btn2);
+
+        viewProfile(profileBtn1);
+        viewProfile(profileBtn2);
+
         myMenu(view);
+    }
+
+    private void viewProfile(ImageButton bt) {
+        bt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                CustomImageDialog customDialog = new CustomImageDialog(getActivity());
+                customDialog.setImage(R.drawable.h_profile);
+                customDialog.show();
+            }
+        });
     }
 
     private void myMenu(View view) {
@@ -160,65 +173,31 @@ public class HomeFragment extends Fragment {
         actionMenu.setStateChangeListener(new FloatingActionMenu.MenuStateChangeListener() {
             @Override
             public void onMenuOpened(FloatingActionMenu floatingActionMenu) {
-//                MainActivity ma = (MainActivity)getActivity();
-//                ma.makeDim();
 
                 dimBg.setVisibility(View.VISIBLE);
                 dimBg.setZ(90);
 
-
                 ll.setZ(100);
                 ll.bringToFront();
-//                FrameLayout dimLayout = ma.getDimLayout();
-
-//                ViewGroup parent = (ViewGroup) actionButton.getParent();
-//                parent.removeView(actionButton);
-
-//                dimLayout.addView(actionButton);
-
-//                actionMenu.getActivityContentView().bringToFront();
-//                actionMenu.getActivityContentView().setZ(100);
-//                actionButton.setZ(100);
-//                actionButton.bringToFront();
-//
-//                icon.bringToFront();
-//                icon.setZ(100);
-
-//                ViewGroup parent = (ViewGroup) actionButton.getParent();
-//                parent.removeView(actionButton);
-//
-//                ll.addView(actionButton);
             }
-
 
             @Override
             public void onMenuClosed(FloatingActionMenu floatingActionMenu) {
-//                MainActivity ma = (MainActivity)getActivity();
-//                ma.dismissDim();
                 dimBg.setVisibility(View.GONE);
-
-//                ViewGroup parent = (ViewGroup) actionButton.getParent();
-//                parent.removeView(actionButton);
-//
-//                ll.addView(actionButton);
             }
         });
-
 
         for (int i = 0 ; i < roomImages.length ; i++) {
             final int j = i;
             subActionButtons[i].setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    myRoom.setImageResource(roomImages[j]);
-                    myState.setImageResource(subButtonImages[j]);
-                    actionMenu.close(true);
+            myRoom.setImageResource(roomImages[j]);
+            myState.setImageResource(subButtonImages[j]);
+            actionMenu.close(true);
                 }
             });
         }
-
-
 
     }
 

@@ -42,9 +42,9 @@
         <item name="android:textColorPrimary">@android:color/black</item>
 
         <!-- color of the menu overflow icon (three vertical dots) -->
-        <item name="android:textColorSecondary">@color/color_secondary_text</item>
+        <item name="android:textColorSecondary">@color/line_color</item>
 
-
+        <item name="android:textColorHint">@color/line_color</item>
         <!--<item name="android:windowBackground">@color/window_background</item>-->
     </style>
 
@@ -75,7 +75,14 @@
 
     <style name="FloatingActionButtonBlue" parent="android:Widget.Material.Button">
         <item name="android:background">@drawable/fab_background_blue</item>
+    </style>
 
+    <style name="FloatingActionButtonRed" parent="android:Widget.Material.Button">
+        <item name="android:background">@drawable/fab_background_red</item>
+    </style>
+
+    <style name="FloatingActionButtonShopBlue" parent="android:Widget.Material.Button">
+        <item name="android:background">@drawable/fab_background_shop_blue</item>
     </style>
 
     <style name="FloatingActionButton.Mini">
@@ -124,6 +131,12 @@
         <item name="android:layout_width">68dp</item>
         <item name="android:layout_height">68dp</item>
         <item name="android:padding">10dp</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <style name="m_edit_text">
+        <item name="android:background">@android:color/transparent</item>
+        <item name="android:padding">7dp</item>
         <item name="android:layout_centerInParent">true</item>
     </style>
 

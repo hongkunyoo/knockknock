@@ -1,16 +1,20 @@
 package edu.handong.design.knockknock.activity;
 
+import android.content.DialogInterface;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
+import android.support.v7.app.AlertDialog;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import edu.handong.design.knockknock.R;
+import edu.handong.design.knockknock.util.Logger;
 
 public class HouseWorkAddActivity extends ActionBarActivity {
     ArrayList<ImageView> imArr = new ArrayList();
@@ -24,6 +28,9 @@ public class HouseWorkAddActivity extends ActionBarActivity {
     ImageView iv8;
     ImageView iv9;
     ImageView doneBtn;
+
+    EditText periodEt;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +59,8 @@ public class HouseWorkAddActivity extends ActionBarActivity {
         detail_iv1 = (ImageView) findViewById(R.id.hw_detail_iv1);
         detail_iv2 = (ImageView) findViewById(R.id.hw_detail_iv2);
         doneBtn = (ImageView) findViewById(R.id.hw_done_btn);
+
+        periodEt = (EditText) findViewById(R.id.hw_period_et);
     }
 
     private void setBinding() {
@@ -71,6 +80,42 @@ public class HouseWorkAddActivity extends ActionBarActivity {
                 overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
             }
         });
+
+        periodEt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                if (hasFocus) {
+                    periodEt.clearFocus();
+                    showSelectDialog(periodEt);
+                }
+            }
+        });
+    }
+
+    private int selected_index = 0;
+    private void showSelectDialog(final EditText periodEt) {
+        final String items[] = { "매일", "3일", "5일", "1주일", "기타" };
+        AlertDialog.Builder ab = new AlertDialog.Builder(this);
+        ab.setTitle("청소 주기 설정");
+        ab.setSingleChoiceItems(items, 0,
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // 각 리스트를 선택했을때
+                        selected_index = whichButton;
+                    }
+                }).setPositiveButton("Ok",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // OK 버튼 클릭시 , 여기서 선택한 값을 메인 Activity 로 넘기면 된다.
+                        periodEt.setText(items[selected_index]);
+                    }
+                }).setNegativeButton("Cancel",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int whichButton) {
+                        // Cancel 버튼 클릭시
+                    }
+                });
+        ab.show();
     }
 
     private void setClick(final ImageView view) {

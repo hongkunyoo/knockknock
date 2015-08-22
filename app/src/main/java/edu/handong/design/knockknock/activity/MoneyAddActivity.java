@@ -1,18 +1,27 @@
 package edu.handong.design.knockknock.activity;
 
+import android.app.DatePickerDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.view.KeyEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 
 import edu.handong.design.knockknock.R;
 
 public class MoneyAddActivity extends ActionBarActivity {
     ArrayList<ImageView> imArr = new ArrayList();
-    ImageView detail_iv1;
-    ImageView detail_iv2;
+    ImageView by_person;
+    ImageView by_share;
     ImageView iv3;
     ImageView iv4;
     ImageView iv5;
@@ -21,45 +30,60 @@ public class MoneyAddActivity extends ActionBarActivity {
     ImageView iv8;
     ImageView iv9;
     ImageView doneBtn;
+
+    private EditText spendStart;
+    private EditText spendEnd;
+    private Context context;
+    private EditText totalSpendMoney;
+    private ArrayList<EditText> splitEts = new ArrayList<>();
+    private int[] splitIds = new int[]{ R.id.split_id_1, R.id.split_id_2, R.id.split_id_3, R.id.split_id_4};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_money_add);
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.tabanim_toolbar);
-        toolbar.setTitle("할일 더하기");
+        toolbar.setTitle("새로운 지출");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        this.context = this;
         setView();
         setBinding();
     }
 
 
     private void setView() {
-        imArr.add((ImageView) findViewById(R.id.hw_id1));
-        imArr.add((ImageView) findViewById(R.id.hw_id2));
-        imArr.add((ImageView) findViewById(R.id.hw_id3));
-        imArr.add((ImageView) findViewById(R.id.hw_id4));
-        imArr.add((ImageView) findViewById(R.id.hw_id5));
-        imArr.add((ImageView) findViewById(R.id.hw_id6));
-        imArr.add((ImageView) findViewById(R.id.hw_id7));
-        imArr.add((ImageView) findViewById(R.id.hw_id8));
-        imArr.add((ImageView) findViewById(R.id.hw_id9));
+//        imArr.add((ImageView) findViewById(R.id.hw_id1));
+//        imArr.add((ImageView) findViewById(R.id.hw_id2));
+//        imArr.add((ImageView) findViewById(R.id.hw_id3));
+//        imArr.add((ImageView) findViewById(R.id.hw_id4));
+//        imArr.add((ImageView) findViewById(R.id.hw_id5));
+//        imArr.add((ImageView) findViewById(R.id.hw_id6));
+//        imArr.add((ImageView) findViewById(R.id.hw_id7));
+//        imArr.add((ImageView) findViewById(R.id.hw_id8));
+//        imArr.add((ImageView) findViewById(R.id.hw_id9));
 
-        detail_iv1 = (ImageView) findViewById(R.id.hw_detail_iv1);
-        detail_iv2 = (ImageView) findViewById(R.id.hw_detail_iv2);
-        doneBtn = (ImageView) findViewById(R.id.hw_done_btn);
+        by_person = (ImageView) findViewById(R.id.by_person_id);
+        by_share = (ImageView) findViewById(R.id.by_share_id);
+        doneBtn = (ImageView) findViewById(R.id.m_done_btn);
+        spendStart = (EditText) findViewById(R.id.spend_start);
+        spendEnd = (EditText) findViewById(R.id.spend_end);
+        totalSpendMoney = (EditText) findViewById(R.id.total_spend_money);
+
+        for (int i = 0 ; i < splitIds.length ; i++) {
+            splitEts.add((EditText) findViewById(splitIds[i]));
+        }
+
     }
 
     private void setBinding() {
 
-        for (ImageView iv : imArr) {
-            setClick(iv);
-        }
+//        for (ImageView iv : imArr) {
+//            setClick(iv);
+//        }
 
-        setClickDetail(detail_iv1);
-        setClickDetail(detail_iv2);
-        detail_iv1.setSelected(true);
+        setClickDetail(by_person);
+        setClickDetail(by_share);
+        by_share.setSelected(true);
 
         doneBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +92,23 @@ public class MoneyAddActivity extends ActionBarActivity {
                 overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
             }
         });
+        
+        setDateEditText(spendStart);
+        setDateEditText(spendEnd);
+        inShareSelected();
+    }
+
+    private boolean isNumeric(String str)
+    {
+        try
+        {
+            double d = Double.parseDouble(str);
+        }
+        catch(NumberFormatException nfe)
+        {
+            return false;
+        }
+        return true;
     }
 
     private void setClick(final ImageView view) {
@@ -82,19 +123,87 @@ public class MoneyAddActivity extends ActionBarActivity {
         });
     }
 
+    private void showDateDialog(final EditText et) {
+        GregorianCalendar calendar = new GregorianCalendar();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day= calendar.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog.OnDateSetListener dateSetListener = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                String msg = String.format("%d. %d. %d", year,monthOfYear+1, dayOfMonth);
+//                Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+                et.setText(msg);
+            }
+        };
+        DatePickerDialog dpd = new DatePickerDialog(context, dateSetListener, year,month, day);
+        dpd.show();
+    }
+
+    private void setDateEditText(final EditText et) {
+        et.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+
+                if (hasFocus) {
+                    et.clearFocus();
+                    showDateDialog(et);
+                }
+            }
+        });
+        et.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+    }
+
     private void setClickDetail(final ImageView view) {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (view.getId() == detail_iv1.getId()) {
-                    detail_iv2.setSelected(false);
-                    detail_iv1.setSelected(true);
-                } else if (view.getId() == detail_iv2.getId()) {
-                    detail_iv1.setSelected(false);
-                    detail_iv2.setSelected(true);
+                if (view.getId() == by_share.getId()) {
+                    by_person.setSelected(false);
+                    by_share.setSelected(true);
+                    inShareSelected();
+                } else if (view.getId() == by_person.getId()) {
+                    by_share.setSelected(false);
+                    by_person.setSelected(true);
+                    inPersonSelected();
                 }
             }
         });
+    }
+
+    private void inShareSelected() {
+        for (EditText et : splitEts) {
+//            et.setFocusable(false);
+        }
+        totalSpendMoney.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int keyCode, KeyEvent event) {
+                String number = totalSpendMoney.getText().toString();
+                if (!isNumeric(number)) return false;
+
+                double totalMoney = Double.parseDouble(number);
+                totalMoney = (totalMoney/4.0);
+                for (EditText et : splitEts) {
+                    et.setText(String.valueOf(totalMoney));
+                }
+                return false;
+            }
+        });
+    }
+
+    private void inPersonSelected() {
+        for (EditText et : splitEts) {
+//            et.setFocusable(true);
+            totalSpendMoney.setOnKeyListener(null);
+        }
     }
 
 

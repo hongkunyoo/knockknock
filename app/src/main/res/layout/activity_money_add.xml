@@ -1,9 +1,12 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:scrollbars="none"
     >
-
+<RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -35,103 +38,193 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginBottom="5dp"
-            android:text="아이콘을 선택해 주세요"/>
+            android:text="무엇을 지출하셨나요?"/>
 
         <include
             layout="@layout/custom_line" />
 
-        <TableLayout
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            style="@style/m_edit_text"
+            android:hint="3월 전기세" />
+
+        <include
+            layout="@layout/custom_line" />
+
+        <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_alignParentStart="true"
-            >
-
-
-            <TableRow
-                android:gravity="center_horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
-
-                <ImageView
-                    android:src="@drawable/hw_icon1_s"
-                    android:id="@+id/hw_id1"
-                    style="@style/hw_add_icon"
-                    />
-                <ImageView
-                    android:src="@drawable/hw_icon2_s"
-                    android:id="@+id/hw_id2"
-                    style="@style/hw_add_icon"
-                    />
-                <ImageView
-                    android:src="@drawable/hw_icon3_s"
-                    android:id="@+id/hw_id3"
-                    style="@style/hw_add_icon"
-                    />
-                <ImageView
-                    android:src="@drawable/hw_icon4_s"
-                    android:id="@+id/hw_id4"
-                    style="@style/hw_add_icon"
-                    />
-            </TableRow>
-            <TableRow
-                android:gravity="center_horizontal"
-                android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
-
-                <ImageView
-                    android:src="@drawable/hw_icon5_s"
-                    android:id="@+id/hw_id5"
-                    style="@style/hw_add_icon"
-                    />
-                <ImageView
-                    android:src="@drawable/hw_icon6_s"
-                    android:id="@+id/hw_id6"
-                    style="@style/hw_add_icon"
-                    />
-                <ImageView
-                    android:src="@drawable/hw_icon7_s"
-                    android:id="@+id/hw_id7"
-                    style="@style/hw_add_icon"
-                    />
-                <ImageView
-                    android:src="@drawable/hw_icon8_s"
-                    android:id="@+id/hw_id8"
-                    style="@style/hw_add_icon"
-                    />
-            </TableRow>
-            <TableRow
-                android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp"
+            android:weightSum="1">
+            <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0.5"
+
                 >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="지출 날짜"/>
+                <include
+                    layout="@layout/custom_line" />
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:src="@drawable/cal"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:padding="5dp"
+                        android:layout_marginRight="5dp"
+                        />
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:id="@+id/spend_start"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        style="@style/m_edit_text"
+                        android:hint="2015.03.06" />
+                </LinearLayout>
+                <include
+                    layout="@layout/custom_line" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="0.5">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:text="지출 기한"/>
+                <include
+                    layout="@layout/custom_line" />
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:src="@drawable/cal"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:padding="5dp"
+                        android:layout_marginRight="5dp"
+                        />
+                    <EditText
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/spend_end"
+                        android:inputType="text"
+                        style="@style/m_edit_text"
+                        android:hint="2015.03.06" />
 
-                <ImageView
-                    android:src="@drawable/hw_icon9_s"
-                    android:id="@+id/hw_id9"
-                    style="@style/hw_add_icon"
-                    />
+                </LinearLayout>
+                <include
+                    layout="@layout/custom_line" />
+            </LinearLayout>
+        </LinearLayout>
 
-                <ImageView
-                    android:src="@drawable/icon9_wob"
-                    style="@style/hw_add_icon"
-                    />
-                <ImageView
-                    android:src="@drawable/icon9_wob"
-                    style="@style/hw_add_icon"
-                    />
-                <ImageView
-                    android:src="@drawable/icon9_wob"
-                    style="@style/hw_add_icon"
-                    />
-
-
-            </TableRow>
-        </TableLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="금액은 얼마인가요?"/>
 
         <include
             layout="@layout/custom_line" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageView
+                android:src="@drawable/dollar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:padding="5dp"
+                android:layout_gravity="center"
+                />
+            <EditText
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                style="@style/m_edit_text"
+                android:layout_gravity="center"
+                android:id="@+id/total_spend_money"
+                android:hint="000.00" />
+
+        </LinearLayout>
+
+        <include
+            layout="@layout/custom_line" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="지출종류를 선택해주세요"/>
+
+        <include
+            layout="@layout/custom_line" />
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:weightSum="1">
+            <ImageView
+                android:src="@drawable/m_add_1"
+                android:layout_weight="0.2"
+                android:layout_width="38dp"
+                android:layout_height="38dp"/>
+            <ImageView
+                android:src="@drawable/m_add_2"
+                android:layout_weight="0.2"
+                android:layout_width="38dp"
+                android:layout_height="38dp"/>
+            <ImageView
+                android:src="@drawable/m_add_3"
+                android:layout_weight="0.2"
+                android:layout_width="38dp"
+                android:layout_height="38dp"/>
+            <ImageView
+                android:src="@drawable/m_add_4"
+                android:layout_weight="0.2"
+                android:layout_width="38dp"
+                android:layout_height="38dp"/>
+            <ImageView
+                android:src="@drawable/m_add_5"
+                android:layout_weight="0.2"
+                android:layout_width="38dp"
+                android:layout_height="38dp"/>
+        </LinearLayout>
+
+
+
+        <include
+            layout="@layout/custom_line" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="5dp"
+            android:text="어떻게 나눠낼까요?"/>
 
         <LinearLayout
             android:layout_width="wrap_content"
@@ -139,83 +232,185 @@
             android:layout_gravity="center"
             android:orientation="horizontal">
             <ImageView
-                android:src="@drawable/hw_detail1_s"
+                android:src="@drawable/by_share_s"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/hw_detail_iv1"
+                android:id="@+id/by_share_id"
                 />
             <ImageView
-                android:src="@drawable/hw_detail2_s"
+                android:src="@drawable/by_person_s"
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
-                android:id="@+id/hw_detail_iv2"
+                android:id="@+id/by_person_id"
                 />
         </LinearLayout>
-
-        <include
-            layout="@layout/custom_line" />
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
+            android:layout_marginTop="5dp"
+            android:weightSum="1"
             android:orientation="horizontal">
             <ImageView
-                android:src="@drawable/pen"
+                android:src="@drawable/person1"
                 android:layout_width="45dp"
                 android:layout_height="45dp"
                 android:layout_marginRight="10dp"
-                />
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/edit_text_email"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:hint="할 일의 이름을 입력해 주세요" />
-
-            </android.support.design.widget.TextInputLayout>
-        </LinearLayout>
-
-        <include
-            layout="@layout/custom_line" />
-
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="8dp"
-            android:orientation="horizontal">
-            <ImageView
-                android:src="@drawable/cal"
-                android:layout_width="45dp"
-                android:layout_height="45dp"
-                android:layout_marginRight="10dp"
-                />
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-
-                <EditText
-                    android:id="@+id/edit_text"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:inputType="text"
-                    android:hint="반복 주기를 입력해 주세요" />
-
-            </android.support.design.widget.TextInputLayout>
-            <TextView
-                android:layout_width="300dp"
+                android:layout_weight="0.15"
                 android:layout_gravity="center"
-                android:textSize="20sp"
+                />
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="일 마다 반복"/>
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:layout_gravity="center"
+                android:text="정다솜"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_weight="0.25"
+                style="@style/m_edit_text"
+                android:layout_gravity="center"
+                android:id="@+id/split_id_1"
+                android:hint="$0.00" />
+            <ImageView
+                android:src="@drawable/m_check_small"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="10dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.1"
+                />
         </LinearLayout>
 
-        <include
-            layout="@layout/custom_line" />
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:weightSum="1"
+            android:orientation="horizontal">
+            <ImageView
+                android:src="@drawable/person2"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.15"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:layout_gravity="center"
+                android:text="김태완"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_weight="0.25"
+                style="@style/m_edit_text"
+                android:layout_gravity="center"
+                android:id="@+id/split_id_2"
+                android:hint="$0.00" />
+            <ImageView
+                android:src="@drawable/m_check_small"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.1"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:weightSum="1"
+            android:orientation="horizontal">
+            <ImageView
+                android:src="@drawable/person3"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.15"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:layout_gravity="center"
+                android:text="김도형"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_weight="0.25"
+                style="@style/m_edit_text"
+                android:layout_gravity="center"
+                android:id="@+id/split_id_3"
+                android:hint="$0.00" />
+            <ImageView
+                android:src="@drawable/m_check_small"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.1"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:weightSum="1"
+            android:orientation="horizontal">
+            <ImageView
+                android:src="@drawable/person4"
+                android:layout_width="45dp"
+                android:layout_height="45dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.15"
+                android:layout_gravity="center"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:layout_weight="0.5"
+                android:layout_gravity="center"
+                android:text="빙수야"/>
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:layout_weight="0.25"
+                style="@style/m_edit_text"
+                android:layout_gravity="center"
+                android:id="@+id/split_id_4"
+                android:hint="$0.00" />
+            <ImageView
+                android:src="@drawable/m_check_small"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="0.1"
+                android:layout_gravity="center"
+                />
+        </LinearLayout>
 
         <ImageView
             android:src="@drawable/okay"
@@ -223,8 +418,9 @@
             android:layout_height="50dp"
             android:layout_marginTop="15dp"
             android:layout_gravity="center"
-            android:id="@+id/hw_done_btn"
+            android:id="@+id/m_done_btn"
             />
 
     </LinearLayout>
 </RelativeLayout>
+</ScrollView>

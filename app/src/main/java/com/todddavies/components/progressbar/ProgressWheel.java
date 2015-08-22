@@ -5,6 +5,7 @@ import android.content.res.TypedArray;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
@@ -328,10 +329,17 @@ public class ProgressWheel extends View {
         int myHeight= (getHeight() - bit.getHeight())/2;
         canvas.drawBitmap(bit, myWidth, myHeight, null);
 //        Logger.log(bitmapImage.getWidth());
-//        if (isSpinning) {
-//            scheduleRedraw();
-//        }
+        if (isSpinning) {
+            scheduleRedraw();
+        }
+        if (progress < animSize) {
+            progress = progress + 8;
+            postInvalidateDelayed(delayMillis);
+        }
+
     }
+
+    int myprogress = 0;
 
     private void scheduleRedraw() {
     	progress += spinSpeed;
@@ -385,6 +393,7 @@ public class ProgressWheel extends View {
             progress = 0;
         //setText(Math.round(((float) progress / 360) * 100) + "%");
         postInvalidate();
+//        scheduleRedraw();
     }
 
 
@@ -590,5 +599,60 @@ public class ProgressWheel extends View {
     	if ( contourPaint != null ) {
     		this.contourPaint.setStrokeWidth( this.contourSize );
     	}
+    }
+
+    public static final int CASE0 = 0;
+    public static final int CASE1 = 1;
+    public static final int CASE2 = 2;
+    public static final int CASE3 = 3;
+    public static final int CASE4 = 4;
+    public static final int CASE5 = 5;
+
+
+    private int _case;
+    private int animSize;
+    public int getAnimSize() {
+        return animSize;
+    }
+    public void setAnimSize(int size) {
+        this.animSize = size;
+    }
+    public int getCase() {return _case;}
+    public void setCase(int _case) {
+        this._case = _case;
+        switch (_case) {
+            case CASE0:
+                this.animSize = 0;
+//                this.setBarColor(Color.parseColor("#86EAE3"));
+                break;
+            case CASE1:
+                this.animSize = 36;
+                this.setBarColor(Color.parseColor("#86EAE3"));
+                break;
+            case CASE2:
+                this.animSize = 108;
+                this.setBarColor(Color.parseColor("#86EAE3"));
+                break;
+            case CASE3:
+                this.animSize = 162;
+                this.setBarColor(Color.parseColor("#6AD3D1"));
+                break;
+            case CASE4:
+                this.animSize = 252;
+                this.setBarColor(Color.parseColor("#27ACA6"));
+                break;
+            default:
+                this.animSize = 360;
+                this.setBarColor(Color.parseColor("#ED7D7A"));
+                break;
+        }
+        postInvalidate();
+    }
+
+    public void clearAnimSize() {
+        this.setAnimSize(0);
+        this._case = CASE0;
+        progress = 0;
+        postInvalidate();
     }
 }

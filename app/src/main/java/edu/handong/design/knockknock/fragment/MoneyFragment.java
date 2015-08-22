@@ -1,10 +1,12 @@
 package edu.handong.design.knockknock.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
 import android.support.design.widget.CoordinatorLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
@@ -20,6 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import edu.handong.design.knockknock.R;
+import edu.handong.design.knockknock.activity.HouseWorkAddActivity;
+import edu.handong.design.knockknock.activity.MoneyAddActivity;
 import edu.handong.design.knockknock.adapter.MoneyListAdapter;
 import edu.handong.design.knockknock.model.Item;
 import edu.handong.design.knockknock.util.Logger;
@@ -40,6 +44,8 @@ public class MoneyFragment extends Fragment {
     private MoneyListAdapter moneyAdapter;
     private LinearLayoutManager llManager;
     private CoordinatorLayout moneyLayout;
+
+    private FloatingActionButton fab;
 
     // TODO: Rename and change types and number of parameters
     public static MoneyFragment newInstance(String param1, String param2) {
@@ -93,10 +99,19 @@ public class MoneyFragment extends Fragment {
         mItemList.add(new Item(R.drawable.money03));
         mItemList.add(new Item(R.drawable.money04));
         moneyAdapter.notifyDataSetChanged();
+
+        fab = (FloatingActionButton) view.findViewById(R.id.money_fab);
     }
 
     private void setBinding() {
-
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), MoneyAddActivity.class));
+                getActivity().overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
+            }
+        });
+//        startActivity(new Intent(getActivity(), MoneyAddActivity.class));
     }
 
 

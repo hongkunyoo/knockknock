@@ -2,14 +2,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".MainActivity">
-    <item android:id="@+id/action_settings" android:title="@string/menu_test"
-        android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/action_drawer" android:title="DrawerActivity"
-        android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/action_test2" android:title="Test2Activity"
-        android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/action_test3" android:title="Test3Activity"
-        android:orderInCategory="100" app:showAsAction="never" />
-    <item android:id="@+id/action_preset" android:title="PresetActivity"
-        android:orderInCategory="100" app:showAsAction="never" />
+    <!--<item android:id="@+id/action_settings" android:title="@string/menu_test"-->
+        <!--android:orderInCategory="100" app:showAsAction="never" />-->
+
+    <item
+        android:id="@+id/action_menu"
+        android:orderInCategory="100"
+        app:showAsAction="always"
+        android:icon="@drawable/menu04"
+        android:title="Menu"/>
+
 </menu>

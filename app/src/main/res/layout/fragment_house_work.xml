@@ -1,44 +1,54 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:ProgressWheel="http://schemas.android.com/apk/res-auto"
-    android:padding="10dp"
+    android:id="@+id/hw_cor_layout"
     tools:context="edu.handong.design.knockknock.fragment.HouseWorkFragment">
 
-    <ImageView
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView2"
-        android:src="@drawable/notice01"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:id="@+id/hw_ll_anchor"
+        android:padding="10dp">
 
 
-    <TableLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentStart="true"
-        android:layout_above="@+id/house_work_fab"
-        android:layout_below="@+id/imageView2"
-        >
+        <ImageView
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:id="@+id/imageView2"
+            android:src="@drawable/notice01"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
 
-        <TableRow
-            android:gravity="center_horizontal"
+
+        <TableLayout
             android:layout_width="fill_parent"
-            android:layout_height="fill_parent">
-            <com.todddavies.components.progressbar.ProgressWheel
-                ProgressWheel:image="@drawable/icon1_wob"
-                android:id="@+id/icon1_wob_id"
-                style="@style/kProgressWheel"
-                 />
-            <com.todddavies.components.progressbar.ProgressWheel
-                ProgressWheel:image="@drawable/icon2_wob"
-                style="@style/kProgressWheel"
-                />
-            <com.todddavies.components.progressbar.ProgressWheel
-                ProgressWheel:image="@drawable/icon3_wob"
-                style="@style/kProgressWheel" />
+            android:layout_height="fill_parent"
+            android:layout_alignParentStart="true"
+
+            android:layout_below="@+id/imageView2"
+            >
+
+            <TableRow
+                android:gravity="center_horizontal"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent">
+                <com.todddavies.components.progressbar.ProgressWheel
+                    ProgressWheel:image="@drawable/icon1_wob"
+                    android:id="@+id/icon_wob_id1"
+                    style="@style/kProgressWheel"
+                     />
+                <com.todddavies.components.progressbar.ProgressWheel
+                    ProgressWheel:image="@drawable/icon2_wob"
+                    android:id="@+id/icon_wob_id2"
+                    style="@style/kProgressWheel"
+                    />
+                <com.todddavies.components.progressbar.ProgressWheel
+                    ProgressWheel:image="@drawable/icon3_wob"
+                    android:id="@+id/icon_wob_id3"
+                    style="@style/kProgressWheel" />
             </TableRow>
             <TableRow
                 android:gravity="center_horizontal"
@@ -46,12 +56,15 @@
                 android:layout_height="fill_parent">
                 <com.todddavies.components.progressbar.ProgressWheel
                     ProgressWheel:image="@drawable/icon4_wob"
+                    android:id="@+id/icon_wob_id4"
                     style="@style/kProgressWheel" />
                 <com.todddavies.components.progressbar.ProgressWheel
                     ProgressWheel:image="@drawable/icon5_wob"
+                    android:id="@+id/icon_wob_id5"
                     style="@style/kProgressWheel" />
                 <com.todddavies.components.progressbar.ProgressWheel
                     ProgressWheel:image="@drawable/icon6_wob"
+                    android:id="@+id/icon_wob_id6"
                     style="@style/kProgressWheel" />
             </TableRow>
             <TableRow
@@ -60,34 +73,36 @@
                 android:layout_height="wrap_content">
                 <com.todddavies.components.progressbar.ProgressWheel
                     ProgressWheel:image="@drawable/icon7_wob"
-
+                    android:id="@+id/icon_wob_id7"
                     style="@style/kProgressWheel" />
                 <com.todddavies.components.progressbar.ProgressWheel
                     ProgressWheel:image="@drawable/icon8_wob"
-
+                    android:id="@+id/icon_wob_id8"
                     style="@style/kProgressWheel" />
                 <com.todddavies.components.progressbar.ProgressWheel
                     ProgressWheel:image="@drawable/icon9_wob"
+                    android:id="@+id/icon_wob_id9"
                     style="@style/kProgressWheel" />
             </TableRow>
         </TableLayout>
+    </LinearLayout>
 
-        <android.support.design.widget.FloatingActionButton
-            android:id="@+id/house_work_fab"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/plus"
-            android:layout_marginBottom="10dp"
-            android:layout_marginRight="5dp"
-            style="@style/FloatingActionButtonBlue"
-            app:layout_anchorGravity="bottom|right|end"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"
-            app:fabSize="normal"
-            app:rippleColor="@android:color/white"
-            app:pressedTranslationZ="12dp"
-            app:borderWidth="0dp"
-            />
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/house_work_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/plus"
+        android:layout_marginBottom="15dp"
+        android:layout_marginRight="15dp"
+        style="@style/FloatingActionButtonBlue"
+        app:layout_anchorGravity="bottom|right|end"
+        app:layout_anchor="@id/hw_ll_anchor"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        app:fabSize="normal"
+        app:rippleColor="@android:color/white"
+        app:pressedTranslationZ="12dp"
+        app:borderWidth="0dp"/>
 
 
-    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
