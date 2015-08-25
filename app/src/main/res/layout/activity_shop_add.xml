@@ -1,0 +1,264 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="none"
+    >
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/app_bar"
+            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/tab_anim_toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:layout_scrollFlags="scroll|enterAlways"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        </android.support.design.widget.AppBarLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="60dp"
+            android:padding="10dp"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="5dp"
+                android:text="무엇이 필요하신가요"/>
+
+            <include
+                layout="@layout/custom_line" />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                style="@style/m_edit_text"
+                android:hint="두루마리 휴지" />
+
+            <include
+                layout="@layout/custom_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:text="선호하는 브랜드나 제품이 있나요"/>
+
+            <include
+                layout="@layout/custom_line" />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                style="@style/m_edit_text"
+                android:hint="푸른나라 두겹" />
+            <include
+                layout="@layout/custom_line" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:layout_gravity="left|center_vertical"
+
+                    android:layout_weight="0.6"
+                    android:text="아이콘을 선택해 주세요"/>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:layout_weight="0.3"
+                    android:gravity="right"
+                    android:layout_gravity="right|center_vertical"
+                    android:layout_marginBottom="5dp"
+                    android:id="@+id/select_label_id"
+                    android:text="자주 사용한 순서"/>
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:layout_gravity="right"
+                    android:id="@+id/shop_list_select_btn_id"
+                    android:src="@drawable/menu04"/>
+
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentStart="true"
+
+                android:layout_below="@+id/imageView2"
+                >
+
+                <TableRow
+                    android:gravity="center_horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                    <ImageView
+                        style="@style/shop_add_icon"
+                        android:id="@+id/shop_01_id"
+                        android:src="@drawable/shop_01_c"/>
+                    <ImageView
+                        style="@style/shop_add_icon"
+                        android:id="@+id/shop_02_id"
+                        android:src="@drawable/shop_02_c"/>
+                    <ImageView
+                        style="@style/shop_add_icon"
+                        android:id="@+id/shop_03_id"
+                        android:src="@drawable/shop_03_c"/>
+                    <ImageView
+                        style="@style/shop_add_icon"
+                        android:id="@+id/shop_04_id"
+                        android:src="@drawable/shop_04_c"/>
+                    <ImageView
+                        style="@style/shop_add_icon"
+                        android:id="@+id/shop_05_id"
+                        android:src="@drawable/shop_05_c"/>
+                </TableRow>
+                <TableRow
+                    android:gravity="center_horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                    <ImageView
+                        style="@style/shop_add_icon"
+                        android:id="@+id/shop_06_id"
+                        android:src="@drawable/shop_06_c"/>
+                    <ImageView
+                        style="@style/shop_add_icon"
+                        android:id="@+id/shop_07_id"
+                        android:src="@drawable/shop_07_c"/>
+                    <ImageView
+                        style="@style/shop_add_icon"
+                        android:id="@+id/shop_08_id"
+                        android:src="@drawable/shop_08_c"/>
+                    <ImageView
+                        style="@style/shop_add_icon"
+                        android:id="@+id/shop_09_id"
+                        android:src="@drawable/shop_09_c"/>
+                    <ImageView
+                        style="@style/shop_add_icon"
+                        android:id="@+id/shop_10_id"
+                        android:src="@drawable/shop_10_c"/>
+                </TableRow>
+            </TableLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:text="아이콘이 없으시다면 아래에서 범주를 선택해 주세요"/>
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_alignParentStart="true"
+
+                android:layout_below="@+id/imageView2"
+                >
+
+                <TableRow
+                    android:gravity="center_horizontal"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                    <ImageView
+                        style="@style/shop_add_icon2"
+                        android:id="@+id/shop2_01_id"
+                        android:src="@drawable/shop2_01_sel"/>
+                    <ImageView
+                        style="@style/shop_add_icon2"
+                        android:id="@+id/shop2_02_id"
+                        android:src="@drawable/shop2_02_sel"/>
+                    <ImageView
+                        style="@style/shop_add_icon2"
+                        android:id="@+id/shop2_03_id"
+                        android:src="@drawable/shop2_03_sel"/>
+                    <ImageView
+                        style="@style/shop_add_icon2"
+                        android:id="@+id/shop2_04_id"
+                        android:src="@drawable/shop2_04_sel"/>
+                </TableRow>
+            </TableLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:text="수량을 입력해 주세요"/>
+
+            <include
+                layout="@layout/custom_line" />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                style="@style/m_edit_text"
+                android:hint="1개" />
+            <include
+                layout="@layout/custom_line" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="5dp"
+                android:text="그 외에 구성원들에게 남기고 싶으신 메세지가 있나요"/>
+
+            <include
+                layout="@layout/custom_line" />
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="text"
+                style="@style/m_edit_text"
+                android:hint="휴지가 다 떨어진지 꽤 된듯 합니다" />
+            <include
+                layout="@layout/custom_line" />
+
+            <ImageView
+                android:src="@drawable/okay"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="15dp"
+                android:layout_gravity="center"
+                android:id="@+id/shop_list_done_btn"
+                />
+
+        </LinearLayout>
+    </RelativeLayout>
+</ScrollView>

@@ -2,6 +2,7 @@ package edu.handong.design.knockknock.adapter;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -17,6 +18,8 @@ import com.daimajia.swipe.SwipeLayout;
 import java.util.List;
 
 import edu.handong.design.knockknock.R;
+import edu.handong.design.knockknock.activity.HouseWorkAddActivity;
+import edu.handong.design.knockknock.activity.ShopListActivity;
 import edu.handong.design.knockknock.model.Item;
 import edu.handong.design.knockknock.view.CustomImageDialog;
 
@@ -115,6 +118,18 @@ public class ShopListAdapter extends RecyclerView.Adapter<ShopListAdapter.ViewHo
 
 
     private void setBottomButton(final ImageView btn, final Item item) {
+
+        if (btn.getId() == R.id.shop_ok_btn) {
+            btn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    context.startActivity(new Intent(context, ShopListActivity.class));
+                }
+            });
+
+            return;
+        }
+
         btn.setOnClickListener(new View.OnClickListener() {
 
             @Override

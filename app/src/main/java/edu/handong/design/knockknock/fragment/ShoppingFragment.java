@@ -24,6 +24,8 @@ import java.util.List;
 import edu.handong.design.knockknock.R;
 import edu.handong.design.knockknock.activity.HouseWorkAddActivity;
 import edu.handong.design.knockknock.activity.MoneyAddActivity;
+import edu.handong.design.knockknock.activity.ShopAddActivity;
+import edu.handong.design.knockknock.activity.ShopListActivity;
 import edu.handong.design.knockknock.adapter.MoneyListAdapter;
 import edu.handong.design.knockknock.adapter.ShopListAdapter;
 import edu.handong.design.knockknock.model.Item;
@@ -46,15 +48,12 @@ public class ShoppingFragment extends Fragment {
     private LinearLayoutManager llManager;
     private CoordinatorLayout moneyLayout;
 
-    private FloatingActionButton fab;
+    private FloatingActionButton shopListBtn;
+    private FloatingActionButton addBtn;
 
     // TODO: Rename and change types and number of parameters
     public static ShoppingFragment newInstance(String param1, String param2) {
         ShoppingFragment fragment = new ShoppingFragment();
-//        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-//        fragment.setArguments(args);
         return fragment;
     }
 
@@ -102,18 +101,25 @@ public class ShoppingFragment extends Fragment {
         mItemList.add(new Item(R.drawable.shop_row_5));
         moneyAdapter.notifyDataSetChanged();
 
-//        fab = (FloatingActionButton) view.findViewById(R.id.money_fab);
+        shopListBtn = (FloatingActionButton) view.findViewById(R.id.shop_cart_fab);
+        addBtn = (FloatingActionButton) view.findViewById(R.id.shop_plus_fab);
     }
 
     private void setBinding() {
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(getActivity(), MoneyAddActivity.class));
-//                getActivity().overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
-//            }
-//        });
-//        startActivity(new Intent(getActivity(), MoneyAddActivity.class));
+//        startActivity(new Intent(this.getActivity(), ShopListActivity.class));
+        shopListBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ShopListActivity.class));
+            }
+        });
+
+        addBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getActivity(), ShopAddActivity.class));
+            }
+        });
     }
 
 

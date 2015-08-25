@@ -140,5 +140,23 @@
         <item name="android:layout_centerInParent">true</item>
     </style>
 
+    <style name="shop_add_icon">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:layout_marginRight">6dp</item>
+        <item name="android:layout_marginLeft">6dp</item>
+        <item name="android:padding">7dp</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
+    <style name="shop_add_icon2">
+        <item name="android:layout_width">65dp</item>
+        <item name="android:layout_height">65dp</item>
+        <item name="android:layout_marginRight">9dp</item>
+        <item name="android:layout_marginLeft">9dp</item>
+        <item name="android:padding">7dp</item>
+        <item name="android:layout_centerInParent">true</item>
+    </style>
+
 
 </resources>

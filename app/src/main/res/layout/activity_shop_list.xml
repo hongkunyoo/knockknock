@@ -1,10 +1,8 @@
-<android.support.design.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/menu_layout"
-    tools:context="edu.handong.design.knockknock.activity.MenuActivity">
+    tools:context="edu.handong.design.knockknock.activity.ShopListActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -23,15 +21,33 @@
     </android.support.design.widget.AppBarLayout>
 
     <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
         android:layout_marginTop="60dp"
-        android:orientation="vertical">
-        <TextView
+        android:padding="10dp"
+        android:orientation="vertical"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/shop_list_recycler_view"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello world!"/>
-        </LinearLayout>
+            android:layout_height="wrap_content"/>
 
 
-</android.support.design.widget.CoordinatorLayout>
+
+
+    </LinearLayout>
+
+    <ImageView
+        android:src="@drawable/okay"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="210dp"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/shop_list_done_btn"
+        />
+
+</RelativeLayout>

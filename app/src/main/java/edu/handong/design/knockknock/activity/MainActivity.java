@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity {
             tab.setCustomView(adapter.getTabView(i));
         }
 
-        tabLayout.getTabAt(0).select();
+        tabLayout.getTabAt(3).select();
 
     }
 
