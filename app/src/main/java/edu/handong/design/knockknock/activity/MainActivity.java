@@ -121,8 +121,9 @@ public class MainActivity extends AppCompatActivity {
             tab.setCustomView(adapter.getTabView(i));
         }
 
-        tabLayout.getTabAt(3).select();
+        tabLayout.getTabAt(0).select();
 
+//        startActivity(new Intent(MainActivity.this, MenuActivity.class));
     }
 
     @Override

@@ -32,10 +32,16 @@ public class ShopAddActivity extends ActionBarActivity {
             R.id.shop_07_id, R.id.shop_08_id, R.id.shop_09_id,
             R.id.shop_10_id
     };
+    final int Y = 0;
+    final int G = 1;
+    final int Red = 2;
+    final int B = 3;
+    private int[] shopDrawType = new int[]{ Y, B, G, G, Y, Red, G, Red, Red, G};
     private int[] shopDraw2Id = new int[] {
             R.id.shop2_01_id, R.id.shop2_02_id, R.id.shop2_03_id,
             R.id.shop2_04_id
     };
+    private int[] shopDraw2Type = new int[]{ Y, G, Red, B};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -120,8 +126,25 @@ public class ShopAddActivity extends ActionBarActivity {
                 for (ImageView ii : list) {
                     ii.setSelected(false);
                 }
+                for (ImageView ii : shopArr2) {
+                    ii.setSelected(false);
+                }
 
                 iv.setSelected(true);
+
+                if (list.equals(shopArr)) {
+                    int idx = shopArr.indexOf(iv);
+                    int color = shopDrawType[idx];
+
+                    shopArr2.get(color).setSelected(true);
+                }
+
+                if (list.equals(shopArr2)) {
+                    for (ImageView ii : shopArr) {
+                        ii.setSelected(false);
+                    }
+                }
+
             }
         });
     }

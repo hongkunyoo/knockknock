@@ -1,5 +1,7 @@
 package edu.handong.design.knockknock.activity;
 
+import android.app.ProgressDialog;
+import android.content.Context;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +12,7 @@ import edu.handong.design.knockknock.util.Logger;
 
 public class MenuActivity extends ActionBarActivity {
 
+    private ProgressDialog progressDialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +28,30 @@ public class MenuActivity extends ActionBarActivity {
     }
 
     private void setBinding() {
-
+//        showProgressDialog(this);
     }
 
     private void setView() {
 
 
+    }
+
+    public void showProgressDialog(Context context){
+//        if(progressDialog == null){
+            progressDialog = new ProgressDialog(context);
+            progressDialog.setCancelable(false);
+            progressDialog.setProgressStyle(R.style.CustomAlertDialogStyle);
+            progressDialog.show();
+            progressDialog.setContentView(R.layout.custom_progress_dialog);
+
+//        }
+    }
+
+    public void dismissProgressDialog(){
+        if(progressDialog != null){
+            progressDialog.dismiss();
+            progressDialog = null;
+        }
     }
 
 
@@ -62,4 +83,6 @@ public class MenuActivity extends ActionBarActivity {
         finish();
         overridePendingTransition(R.anim.slide_in_down, R.anim.slide_out_down);
     }
+
+
 }

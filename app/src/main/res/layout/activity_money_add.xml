@@ -279,7 +279,7 @@
                 android:id="@+id/split_id_1"
                 android:hint="$0.00" />
             <ImageView
-                android:src="@drawable/m_check_small"
+                android:src="@drawable/okay_btn_70_c"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginRight="10dp"
@@ -321,7 +321,7 @@
                 android:id="@+id/split_id_2"
                 android:hint="$0.00" />
             <ImageView
-                android:src="@drawable/m_check_small"
+                android:src="@drawable/okay_btn_70_c"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginRight="10dp"
@@ -362,7 +362,7 @@
                 android:id="@+id/split_id_3"
                 android:hint="$0.00" />
             <ImageView
-                android:src="@drawable/m_check_small"
+                android:src="@drawable/okay_btn_70_c"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginRight="10dp"
@@ -403,7 +403,7 @@
                 android:id="@+id/split_id_4"
                 android:hint="$0.00" />
             <ImageView
-                android:src="@drawable/m_check_small"
+                android:src="@drawable/okay_btn_70_c"
                 android:layout_width="35dp"
                 android:layout_height="35dp"
                 android:layout_marginRight="10dp"
@@ -413,7 +413,7 @@
         </LinearLayout>
 
         <ImageView
-            android:src="@drawable/okay"
+            android:src="@drawable/okay_btn_70_c"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"

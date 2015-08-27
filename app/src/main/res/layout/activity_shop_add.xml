@@ -194,19 +194,19 @@
                     <ImageView
                         style="@style/shop_add_icon2"
                         android:id="@+id/shop2_01_id"
-                        android:src="@drawable/shop2_01_sel"/>
+                        android:src="@drawable/shop2_01_c"/>
                     <ImageView
                         style="@style/shop_add_icon2"
                         android:id="@+id/shop2_02_id"
-                        android:src="@drawable/shop2_02_sel"/>
+                        android:src="@drawable/shop2_02_c"/>
                     <ImageView
                         style="@style/shop_add_icon2"
                         android:id="@+id/shop2_03_id"
-                        android:src="@drawable/shop2_03_sel"/>
+                        android:src="@drawable/shop2_03_c"/>
                     <ImageView
                         style="@style/shop_add_icon2"
                         android:id="@+id/shop2_04_id"
-                        android:src="@drawable/shop2_04_sel"/>
+                        android:src="@drawable/shop2_04_c"/>
                 </TableRow>
             </TableLayout>
 
@@ -251,7 +251,7 @@
                 layout="@layout/custom_line" />
 
             <ImageView
-                android:src="@drawable/okay"
+                android:src="@drawable/okay_btn_70_c"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
