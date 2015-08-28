@@ -188,6 +188,47 @@
         <include
             layout="@layout/custom_line" />
 
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/icon_layout"
+            android:visibility="gone"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:text="아이콘 테두리를 선택해 주세요."
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <ImageView
+                    style="@style/hw_add_icon_style"
+                    android:id="@+id/hw_add_icon_01_id"
+                    android:src="@drawable/hw_add_icon_01_c"/>
+                <ImageView
+                    style="@style/hw_add_icon_style"
+                    android:id="@+id/hw_add_icon_02_id"
+                    android:src="@drawable/hw_add_icon_02_c"/>
+                <ImageView
+                    style="@style/hw_add_icon_style"
+                    android:id="@+id/hw_add_icon_03_id"
+                    android:src="@drawable/hw_add_icon_03_c"/>
+                <ImageView
+                    style="@style/hw_add_icon_style"
+                    android:id="@+id/hw_add_icon_04_id"
+                    android:src="@drawable/hw_add_icon_04_c"/>
+            </LinearLayout>
+            <include
+                layout="@layout/custom_line" />
+        </LinearLayout>
+
+
+
         <TextView
             android:layout_marginTop="5dp"
             android:layout_width="wrap_content"

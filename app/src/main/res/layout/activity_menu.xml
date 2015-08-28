@@ -76,10 +76,12 @@
             <ImageView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
+                android:id="@+id/door_close_id"
                 android:src="@drawable/door_close_c"/>
             <ImageView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
+                android:id="@+id/door_open_id"
                 android:src="@drawable/door_open_c"/>
         </LinearLayout>
         <LinearLayout
@@ -91,10 +93,12 @@
             <ImageView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
+                android:id="@+id/light_off_id"
                 android:src="@drawable/light_off_c"/>
             <ImageView
                 android:layout_width="160dp"
                 android:layout_height="wrap_content"
+                android:id="@+id/light_on_id"
                 android:src="@drawable/light_on_c"/>
         </LinearLayout>
 

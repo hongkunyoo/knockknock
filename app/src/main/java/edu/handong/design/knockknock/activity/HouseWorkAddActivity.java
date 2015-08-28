@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,15 +21,13 @@ public class HouseWorkAddActivity extends ActionBarActivity {
     ArrayList<ImageView> imArr = new ArrayList();
     ImageView detail_iv1;
     ImageView detail_iv2;
-    ImageView iv3;
-    ImageView iv4;
-    ImageView iv5;
-    ImageView iv6;
-    ImageView iv7;
-    ImageView iv8;
-    ImageView iv9;
+    ArrayList<ImageView> iconArr = new ArrayList<>();
+    int[] iconIds = new int[]{
+            R.id.hw_add_icon_01_id, R.id.hw_add_icon_02_id,
+            R.id.hw_add_icon_03_id, R.id.hw_add_icon_04_id
+    };
     ImageView doneBtn;
-
+    LinearLayout ll;
     EditText periodEt;
 
     @Override
@@ -61,12 +60,22 @@ public class HouseWorkAddActivity extends ActionBarActivity {
         doneBtn = (ImageView) findViewById(R.id.hw_done_btn);
 
         periodEt = (EditText) findViewById(R.id.hw_period_et);
+
+        for (int id : iconIds) {
+            iconArr.add((ImageView) findViewById(id));
+        }
+
+        ll = (LinearLayout) findViewById(R.id.icon_layout);
     }
 
     private void setBinding() {
 
         for (ImageView iv : imArr) {
-            setClick(iv);
+            setClick(iv, imArr);
+        }
+
+        for (ImageView iv : iconArr) {
+            setClick(iv, iconArr);
         }
 
         setClickDetail(detail_iv1);
@@ -90,6 +99,7 @@ public class HouseWorkAddActivity extends ActionBarActivity {
                 }
             }
         });
+
     }
 
     private int selected_index = 0;
@@ -118,11 +128,11 @@ public class HouseWorkAddActivity extends ActionBarActivity {
         ab.show();
     }
 
-    private void setClick(final ImageView view) {
+    private void setClick(final ImageView view, final ArrayList<ImageView> list) {
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                for (ImageView iv : imArr) {
+                for (ImageView iv : list) {
                     iv.setSelected(false);
                 }
                 view.setSelected(true);
@@ -137,14 +147,15 @@ public class HouseWorkAddActivity extends ActionBarActivity {
                 if (view.getId() == detail_iv1.getId()) {
                     detail_iv2.setSelected(false);
                     detail_iv1.setSelected(true);
+                    ll.setVisibility(View.GONE);
                 } else if (view.getId() == detail_iv2.getId()) {
                     detail_iv1.setSelected(false);
                     detail_iv2.setSelected(true);
+                    ll.setVisibility(View.VISIBLE);
                 }
             }
         });
     }
-
 
 //    @Override
 //    public boolean onCreateOptionsMenu(Menu menu) {

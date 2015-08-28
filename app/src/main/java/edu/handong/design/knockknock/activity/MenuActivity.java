@@ -6,13 +6,37 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 import edu.handong.design.knockknock.R;
+import edu.handong.design.knockknock.service.ArduinoClient;
 import edu.handong.design.knockknock.util.Logger;
+import edu.handong.design.knockknock.util.RequestHelper;
 
 public class MenuActivity extends ActionBarActivity {
 
+
+    Context context;
     private ProgressDialog progressDialog;
+
+    private ImageView lightOff;
+    private ImageView lightOn;
+    private ImageView doorClose;
+    private ImageView doorOpen;
+
+    String openDoorStr;
+
+    String closeDoorStr;
+
+    String lightOnStr;
+
+    String lightOffStr;
+//    String lightOffStr = "http://google.com";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,6 +46,16 @@ public class MenuActivity extends ActionBarActivity {
         toolbar.setTitle("KnockKnock");
         setSupportActionBar(toolbar);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        context = this;
+
+        try {
+            openDoorStr = "http://us01.proxy.teleduino.org/api/1.0/2560.php?" + URLEncoder.encode("k={0D1416B67EC02539F99B96963AD408E4}&r=setServo&servo=0&position=10", "utf-8");
+            closeDoorStr= "http://us01.proxy.teleduino.org/api/1.0/2560.php?" + URLEncoder.encode("k={0D1416B67EC02539F99B96963AD408E4}&r=setServo&servo=0&position=175", "utf-8");
+            lightOnStr  = "http://us01.proxy.teleduino.org/api/1.0/2560.php?" + URLEncoder.encode("k={0D1416B67EC02539F99B96963AD408E4}&r=setDigitalOutput&pin=3&output=1", "utf-8");
+            lightOffStr = "http://us01.proxy.teleduino.org/api/1.0/2560.php?" + URLEncoder.encode("k={0D1416B67EC02539F99B96963AD408E4}&r=setDigitalOutput&pin=3&output=0", "utf-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
 
         setView();
         setBinding();
@@ -29,11 +63,69 @@ public class MenuActivity extends ActionBarActivity {
 
     private void setBinding() {
 //        showProgressDialog(this);
+        lightOff.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lightOff.setSelected(true);
+                lightOn.setSelected(false);
+                requestUrl(lightOffStr);
+            }
+        });
+
+        lightOn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                lightOff.setSelected(false);
+                lightOn.setSelected(true);
+                requestUrl(lightOnStr);
+            }
+        });
+
+        doorOpen.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doorOpen.setSelected(true);
+                doorClose.setSelected(false);
+                requestUrl(openDoorStr);
+            }
+        });
+
+        doorClose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                doorOpen.setSelected(false);
+                doorClose.setSelected(true);
+                requestUrl(closeDoorStr);
+            }
+        });
+
+
+    }
+
+    private void requestUrl(String _url) {
+        showProgressDialog();
+        RequestHelper.request(_url, new RequestHelper.Callback() {
+            @Override
+            public void onCompleted(String entity) {
+                Toast.makeText(context, entity, Toast.LENGTH_SHORT).show();
+                dismissProgressDialog();
+            }
+        });
     }
 
     private void setView() {
+        lightOff = (ImageView) findViewById(R.id.light_off_id);
+        lightOn = (ImageView) findViewById(R.id.light_on_id);
+        doorClose = (ImageView) findViewById(R.id.door_close_id);
+        doorOpen = (ImageView) findViewById(R.id.door_open_id);
 
+        doorClose.setSelected(true);
+        lightOff.setSelected(true);
 
+    }
+
+    public void showProgressDialog(){
+        this.showProgressDialog(context);
     }
 
     public void showProgressDialog(Context context){

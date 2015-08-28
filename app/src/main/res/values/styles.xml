@@ -178,5 +178,11 @@
         <item name="android:topDark">@color/transparent</item>
     </style>
 
+    <style name="hw_add_icon_style">
+        <item name="android:layout_width">60dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:padding">5dp</item>
+    </style>
+
 
 </resources>

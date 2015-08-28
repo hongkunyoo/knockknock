@@ -22,13 +22,11 @@ public class MoneyAddActivity extends ActionBarActivity {
     ArrayList<ImageView> imArr = new ArrayList();
     ImageView by_person;
     ImageView by_share;
-    ImageView iv3;
-    ImageView iv4;
-    ImageView iv5;
-    ImageView iv6;
-    ImageView iv7;
-    ImageView iv8;
-    ImageView iv9;
+
+    ArrayList<ImageView> spendArr = new ArrayList<ImageView>();
+    int[] drawableId = new int[]{
+            R.id.m_add_1_id, R.id.m_add_2_id, R.id.m_add_3_id, R.id.m_add_4_id, R.id.m_add_5_id,
+    };
     ImageView doneBtn;
 
     private EditText spendStart;
@@ -52,15 +50,6 @@ public class MoneyAddActivity extends ActionBarActivity {
 
 
     private void setView() {
-//        imArr.add((ImageView) findViewById(R.id.hw_id1));
-//        imArr.add((ImageView) findViewById(R.id.hw_id2));
-//        imArr.add((ImageView) findViewById(R.id.hw_id3));
-//        imArr.add((ImageView) findViewById(R.id.hw_id4));
-//        imArr.add((ImageView) findViewById(R.id.hw_id5));
-//        imArr.add((ImageView) findViewById(R.id.hw_id6));
-//        imArr.add((ImageView) findViewById(R.id.hw_id7));
-//        imArr.add((ImageView) findViewById(R.id.hw_id8));
-//        imArr.add((ImageView) findViewById(R.id.hw_id9));
 
         by_person = (ImageView) findViewById(R.id.by_person_id);
         by_share = (ImageView) findViewById(R.id.by_share_id);
@@ -73,7 +62,13 @@ public class MoneyAddActivity extends ActionBarActivity {
             splitEts.add((EditText) findViewById(splitIds[i]));
         }
 
+        for (int i = 0 ; i < drawableId.length ; i++) {
+            spendArr.add((ImageView) findViewById(drawableId[i]));
+        }
+
     }
+
+
 
     private void setBinding() {
 
@@ -96,6 +91,22 @@ public class MoneyAddActivity extends ActionBarActivity {
         setDateEditText(spendStart);
         setDateEditText(spendEnd);
         inShareSelected();
+
+        for (ImageView iv : spendArr) {
+            setSpendClick(iv);
+        }
+    }
+
+    private void setSpendClick(final ImageView iv) {
+        iv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                for (ImageView _iv : spendArr) {
+                    _iv.setSelected(false);
+                }
+                iv.setSelected(true);
+            }
+        });
     }
 
     private boolean isNumeric(String str)
