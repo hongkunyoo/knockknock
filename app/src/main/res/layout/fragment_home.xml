@@ -35,7 +35,7 @@
     <ImageView
         android:layout_width="120dp"
         android:layout_height="wrap_content"
-        android:src="@drawable/h_room_freemode"
+        android:src="@drawable/h_room_freemode_my"
         android:id="@+id/myroom_id"
         android:layout_marginRight="27dp"
         android:layout_marginTop="173dp"
@@ -45,38 +45,29 @@
 
     <ImageButton
         android:id="@+id/h_profile_btn1"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:scaleType="fitCenter"
-        android:background="@android:color/transparent"
-        android:src="@drawable/h_no_dist_s"
-        android:layout_marginTop="97dp"
-        android:layout_marginLeft="25dp"
+        style="@style/h_room_pic_style"
+        android:src="@drawable/h_no_dist_s_new"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="59dp"
         android:layout_alignTop="@+id/imageView"
         android:layout_alignParentStart="true" />
 
     <ImageButton
         android:id="@+id/h_profile_btn2"
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:scaleType="fitCenter"
-        android:background="@android:color/transparent"
-        android:src="@drawable/h_no_room_s"
-        android:layout_marginTop="97dp"
-        android:layout_marginLeft="80dp"
+        style="@style/h_room_pic_style"
+        android:src="@drawable/h_no_room_s_new"
+        android:layout_marginTop="94dp"
+        android:layout_marginLeft="59dp"
         android:layout_alignTop="@+id/imageView"
-        android:layout_alignLeft="@+id/h_profile_btn1"
+        android:layout_alignParentStart="true"
     />
 
 
     <ImageButton
-        android:layout_width="65dp"
-        android:layout_height="65dp"
-        android:scaleType="fitCenter"
-        android:background="@android:color/transparent"
-        android:src="@drawable/h_freemode_s"
-        android:layout_marginRight="42dp"
-        android:layout_marginTop="97dp"
+        style="@style/h_room_pic_style"
+        android:src="@drawable/h_freemode_s_new"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="94dp"
         android:id="@+id/imageView5"
         android:layout_alignTop="@+id/imageView"
         android:layout_alignParentEnd="true" />
@@ -89,9 +80,9 @@
         android:background="@android:color/transparent"
         android:src="@drawable/h_question_mark"
         android:layout_marginTop="230dp"
-        android:layout_marginLeft="60dp"
+        android:layout_marginLeft="85dp"
         android:layout_alignTop="@+id/imageView"
-        android:layout_alignLeft="@+id/h_profile_btn1"
+        android:layout_alignParentStart="true"
          />
 
     <ImageButton
@@ -100,7 +91,7 @@
         android:scaleType="fitCenter"
         android:background="@android:color/transparent"
         android:src="@drawable/h_freemode_s"
-        android:layout_marginRight="53dp"
+        android:layout_marginRight="55dp"
         android:layout_marginTop="230dp"
         android:id="@+id/my_state"
         android:layout_alignTop="@+id/imageView"

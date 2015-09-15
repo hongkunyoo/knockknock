@@ -52,8 +52,8 @@ public class HomeFragment extends Fragment {
     private SubActionButton[] subActionButtons = new SubActionButton[4];
     private int[] subButtonImages = new int[] {R.drawable.h_freemode_s, R.drawable.h_no_dist_s,
         R.drawable.h_no_room_s, R.drawable.h_outside_s};
-    private int[] roomImages = new int[] {R.drawable.h_room_freemode, R.drawable.h_room_no_dist,
-        R.drawable.h_room_no_room, R.drawable.h_room_outside};
+    private int[] roomImages = new int[] {R.drawable.h_room_freemode_my, R.drawable.h_room_no_dist_my,
+        R.drawable.h_room_no_room_my, R.drawable.h_room_outside_my};
 
     private RelativeLayout homeBg;
     private ImageView dimBg;
