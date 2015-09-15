@@ -15,10 +15,10 @@
 
 
         <ImageView
-            android:layout_width="250dp"
+            android:layout_width="330dp"
             android:layout_height="wrap_content"
             android:id="@+id/imageView2"
-            android:src="@drawable/notice01"
+            android:src="@drawable/notice02"
             android:layout_alignParentTop="true"
             android:layout_alignParentStart="true" />
 

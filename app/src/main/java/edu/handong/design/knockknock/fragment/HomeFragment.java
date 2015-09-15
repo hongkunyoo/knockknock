@@ -26,6 +26,8 @@ import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
 import edu.handong.design.knockknock.R;
 import edu.handong.design.knockknock.activity.MainActivity;
+import edu.handong.design.knockknock.util.Logger;
+import edu.handong.design.knockknock.util.ObjectPreferenceUtil;
 import edu.handong.design.knockknock.view.CustomImageDialog;
 
 
@@ -87,6 +89,8 @@ public class HomeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         setView(view);
+//        ObjectPreferenceUtil pref = new ObjectPreferenceUtil(getActivity());
+//        pref.put("tab", 1);
 //        setBinding();
         return view;
 

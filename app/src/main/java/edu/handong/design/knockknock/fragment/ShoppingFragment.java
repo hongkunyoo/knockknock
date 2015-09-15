@@ -30,6 +30,7 @@ import edu.handong.design.knockknock.adapter.MoneyListAdapter;
 import edu.handong.design.knockknock.adapter.ShopListAdapter;
 import edu.handong.design.knockknock.model.Item;
 import edu.handong.design.knockknock.util.Logger;
+import edu.handong.design.knockknock.util.ObjectPreferenceUtil;
 
 
 public class ShoppingFragment extends Fragment {
@@ -78,8 +79,18 @@ public class ShoppingFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_shopping, container, false);
         setView(view);
         setBinding();
+//        ObjectPreferenceUtil pref = new ObjectPreferenceUtil(getActivity());
+//        pref.put("tab", 3);
         return view;
     }
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        ObjectPreferenceUtil pref = new ObjectPreferenceUtil(getActivity());
+//        pref.put("tab", 3);
+//        Logger.log(pref.get("tab", Integer.class));
+//    }
 
     private void setView(View view) {
         moneyList = (RecyclerView) view.findViewById(R.id. money_recycler_view);

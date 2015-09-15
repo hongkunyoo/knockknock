@@ -9,6 +9,6 @@
         android:id="@+id/action_menu_done"
         android:orderInCategory="100"
         app:showAsAction="always"
-        android:icon="@drawable/menu05"
+        android:icon="@drawable/amanda_btn_on"
         android:title="Main"/>
 </menu>

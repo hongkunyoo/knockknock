@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -17,12 +18,14 @@ import edu.handong.design.knockknock.R;
 import edu.handong.design.knockknock.service.ArduinoClient;
 import edu.handong.design.knockknock.util.Logger;
 import edu.handong.design.knockknock.util.RequestHelper;
+import edu.handong.design.knockknock.view.CustomProgressDialog;
 
 public class MenuActivity extends ActionBarActivity {
 
 
     Context context;
     private ProgressDialog progressDialog;
+    private CustomProgressDialog customProgressDialog;
 
     private ImageView lightOff;
     private ImageView lightOn;
@@ -129,20 +132,30 @@ public class MenuActivity extends ActionBarActivity {
     }
 
     public void showProgressDialog(Context context){
+
 //        if(progressDialog == null){
-            progressDialog = new ProgressDialog(context);
-            progressDialog.setCancelable(false);
-            progressDialog.setProgressStyle(R.style.CustomAlertDialogStyle);
-            progressDialog.show();
-            progressDialog.setContentView(R.layout.custom_progress_dialog);
+//        progressDialog = new ProgressDialog(context);
+//        progressDialog.setCancelable(false);
+//        progressDialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        progressDialog.setProgressStyle(R.style.CustomAlertDialogStyle);
+//        progressDialog.show();
+//        progressDialog.setContentView(R.layout.custom_progress_dialog);
 
 //        }
+
+        customProgressDialog = new CustomProgressDialog(context);
+        customProgressDialog.show();
     }
 
     public void dismissProgressDialog(){
         if(progressDialog != null){
             progressDialog.dismiss();
             progressDialog = null;
+        }
+
+        if(customProgressDialog != null){
+            customProgressDialog.dismiss();
+            customProgressDialog = null;
         }
     }
 

@@ -38,6 +38,7 @@ import edu.handong.design.knockknock.activity.HouseWorkAddActivity;
 import edu.handong.design.knockknock.activity.MainActivity;
 import edu.handong.design.knockknock.activity.TestActivity;
 import edu.handong.design.knockknock.util.Logger;
+import edu.handong.design.knockknock.util.ObjectPreferenceUtil;
 import edu.handong.design.knockknock.util.RandomUtil;
 import edu.handong.design.knockknock.view.CustomSweetAlertDialog;
 
@@ -103,10 +104,19 @@ public class HouseWorkFragment extends Fragment {
 
         setView(view);
         setBinding();
-
+//        ObjectPreferenceUtil pref = new ObjectPreferenceUtil(getActivity());
+//        pref.put("tab", 0);
 //        startAnim();
         return view;
     }
+
+//    @Override
+//    public void onResume() {
+//        super.onResume();
+//        ObjectPreferenceUtil pref = new ObjectPreferenceUtil(getActivity());
+//        pref.put("tab", 0);
+//        Logger.log(pref.get("tab", Integer.class));
+//    }
 
     private void setView(View view) {
         fab = (FloatingActionButton)view.findViewById(R.id.house_work_fab);
@@ -136,7 +146,6 @@ public class HouseWorkFragment extends Fragment {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 startActivity(new Intent(getActivity(), HouseWorkAddActivity.class));
                 getActivity().overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
             }
@@ -160,7 +169,7 @@ public class HouseWorkFragment extends Fragment {
                         .setAction("UNDO", new View.OnClickListener() {
                             @Override
                             public void onClick(View v) {
-                                Logger.log(prevCase);
+                                pw.diminishing = false;
                                 pw.setCase(prevCase);
                             }
                         })

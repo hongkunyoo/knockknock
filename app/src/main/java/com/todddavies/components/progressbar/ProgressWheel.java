@@ -332,14 +332,25 @@ public class ProgressWheel extends View {
         if (isSpinning) {
             scheduleRedraw();
         }
-        if (progress < animSize) {
-            progress = progress + 8;
-            postInvalidateDelayed(delayMillis);
+
+        if (diminishing) {
+            if (progress > 0) {
+                progress = progress - 8;
+                postInvalidateDelayed(delayMillis);
+            } else {
+                diminishing = false;
+                progress = 0;
+            }
+        } else {
+            if (progress < animSize) {
+                progress = progress + 8;
+                postInvalidateDelayed(delayMillis);
+            }
         }
 
     }
 
-    int myprogress = 0;
+    public boolean diminishing = false;
 
     private void scheduleRedraw() {
     	progress += spinSpeed;
@@ -652,7 +663,7 @@ public class ProgressWheel extends View {
     public void clearAnimSize() {
         this.setAnimSize(0);
         this._case = CASE0;
-        progress = 0;
+        this.diminishing = true;
         postInvalidate();
     }
 }

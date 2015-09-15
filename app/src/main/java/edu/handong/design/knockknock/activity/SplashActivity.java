@@ -16,6 +16,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import edu.handong.design.knockknock.R;
+import edu.handong.design.knockknock.util.ObjectPreferenceUtil;
 
 /**
  * An example full-screen activity that shows and hides the system UI (i.e.
@@ -62,8 +63,9 @@ public class SplashActivity extends Activity {
             @Override
             protected Void doInBackground(Void... params) {
                 try {
-                    Thread.sleep(1300);
-//                    Thread.sleep(10);
+//                    Thread.sleep(1300);
+
+                    Thread.sleep(10);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

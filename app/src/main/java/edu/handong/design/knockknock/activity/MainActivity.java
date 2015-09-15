@@ -1,44 +1,20 @@
 package edu.handong.design.knockknock.activity;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Locale;
-
-import android.app.Activity;
-import android.app.ActionBar;
-import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.BitmapDrawable;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.design.widget.TabLayout;
-import android.support.v13.app.FragmentPagerAdapter;
 import android.os.Bundle;
-import android.support.v4.app.ActionBarDrawerToggle;
-import android.support.v4.view.GravityCompat;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Gravity;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.FrameLayout;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.ListView;
-import android.widget.TextView;
-import android.widget.Toolbar;
+
+import com.google.gson.JsonSyntaxException;
+
+import java.util.HashMap;
 
 import edu.handong.design.knockknock.R;
 import edu.handong.design.knockknock.adapter.kViewPagerAdapter;
@@ -48,6 +24,7 @@ import edu.handong.design.knockknock.fragment.MoneyFragment;
 import edu.handong.design.knockknock.fragment.ShoppingFragment;
 import edu.handong.design.knockknock.util.BitmapUtil;
 import edu.handong.design.knockknock.util.Logger;
+import edu.handong.design.knockknock.util.ObjectPreferenceUtil;
 import edu.handong.design.knockknock.view.CircleImageView;
 
 
@@ -89,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         context = this;
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.tab_anim_toolbar);
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
         viewPager = (ViewPager) findViewById(R.id.tab_anim_viewpager);
         tabLayout = (TabLayout) findViewById(R.id.tab_anim_tabs);
@@ -121,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
             tab.setCustomView(adapter.getTabView(i));
         }
 
-        tabLayout.getTabAt(0).select();
+        tabLayout.getTabAt(1).select();
 
 //        startActivity(new Intent(MainActivity.this, MenuActivity.class));
     }

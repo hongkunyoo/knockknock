@@ -9,7 +9,7 @@
         android:id="@+id/action_menu"
         android:orderInCategory="100"
         app:showAsAction="always"
-        android:icon="@drawable/menu04"
+        android:icon="@drawable/amanda_btn"
         android:title="Menu"/>
 
 </menu>
