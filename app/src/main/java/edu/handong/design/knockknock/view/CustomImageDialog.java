@@ -20,6 +20,8 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
+import java.util.ArrayList;
+
 import cn.pedant.SweetAlert.OptAnimationLoader;
 import edu.handong.design.knockknock.R;
 import edu.handong.design.knockknock.util.Logger;
@@ -38,6 +40,17 @@ public class CustomImageDialog extends Dialog {
     private int height;
     private ImageButton cancelBtn;
 
+    private ArrayList<Integer> taskImages = new ArrayList<Integer>(){{
+        add(R.drawable.task_info_01);
+        add(R.drawable.task_info_02);
+        add(R.drawable.task_info_03);
+        add(R.drawable.task_info_04);
+        add(R.drawable.task_info_05);
+        add(R.drawable.task_info_06);
+        add(R.drawable.task_info_07);
+        add(R.drawable.task_info_08);
+    }
+    };
     public CustomImageDialog(Context context) {
         super(context);
 
@@ -65,7 +78,13 @@ public class CustomImageDialog extends Dialog {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (resId == R.drawable.money_display) {
+        if (resId == R.drawable.h_profile_dohyung || resId == R.drawable.h_profile_seojun
+            || resId == R.drawable.h_profile_taewan) {
+
+            setContentView(R.layout.custom_image_dialog1);
+        } else if (taskImages.contains(resId)) {
+            setContentView(R.layout.custom_image_dialog3);
+        } else if (resId == R.drawable.money_display) {
             setContentView(R.layout.custom_image_dialog);
         } else {
             setContentView(R.layout.custom_image_dialog2);

@@ -1,6 +1,7 @@
 package edu.handong.design.knockknock.view;
 
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -45,7 +46,9 @@ public class CustomSweetAlertDialog extends SweetAlertDialog {
 
         mDialogView = getWindow().getDecorView().findViewById(android.R.id.content);
         mModalOutAnim = (AnimationSet) OptAnimationLoader.loadAnimation(getContext(), R.anim.custom_moal_out);
-//        customImage = (ImageView) findViewById(R.id.my_custom_image);
+        customImage = (ImageView) findViewById(R.id.my_custom_image);
+
+        customImage.setImageResource(resId);
 
         confirmBtn = (ImageButton) findViewById(R.id.sweet_custom_confirm_button);
         cancelBtn = (ImageButton) findViewById(R.id.sweet_custom_cancel_button);
@@ -94,6 +97,9 @@ public class CustomSweetAlertDialog extends SweetAlertDialog {
 
 
     }
+    public void setImage(int resId) {
+        this.resId = resId;
+    }
 
     public void setMyTitleText(String str) {
         setTitleText(str);
@@ -114,7 +120,6 @@ public class CustomSweetAlertDialog extends SweetAlertDialog {
 
     @Override
     public void cancel() {
-        Logger.log("click cancel");
         mDialogView.startAnimation(mModalOutAnim);
 //        dismiss();
     }

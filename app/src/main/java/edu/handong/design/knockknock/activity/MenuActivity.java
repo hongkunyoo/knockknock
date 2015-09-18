@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 
 import edu.handong.design.knockknock.R;
 import edu.handong.design.knockknock.service.ArduinoClient;
@@ -27,11 +28,6 @@ public class MenuActivity extends ActionBarActivity {
     private ProgressDialog progressDialog;
     private CustomProgressDialog customProgressDialog;
 
-    private ImageView lightOff;
-    private ImageView lightOn;
-    private ImageView doorClose;
-    private ImageView doorOpen;
-
     String openDoorStr;
 
     String closeDoorStr;
@@ -40,13 +36,21 @@ public class MenuActivity extends ActionBarActivity {
 
     String lightOffStr;
 //    String lightOffStr = "http://google.com";
+
+    int [] buttonIds = new int[]{
+            R.id.menu_btn_01, R.id.menu_btn_02, R.id.menu_btn_03
+    };
+    ArrayList<ImageView> imgBtns = new ArrayList<>();
+
+    ArrayList<String> onStr = new ArrayList<>();
+    ArrayList<String> offStr = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_menu);
 
         android.support.v7.widget.Toolbar toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.tab_anim_toolbar);
-        toolbar.setTitle("KnockKnock");
+        toolbar.setTitle("");
         setSupportActionBar(toolbar);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         context = this;
@@ -66,43 +70,31 @@ public class MenuActivity extends ActionBarActivity {
 
     private void setBinding() {
 //        showProgressDialog(this);
-        lightOff.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lightOff.setSelected(true);
-                lightOn.setSelected(false);
-                requestUrl(lightOffStr);
-            }
-        });
 
-        lightOn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                lightOff.setSelected(false);
-                lightOn.setSelected(true);
-                requestUrl(lightOnStr);
-            }
-        });
+        for (final ImageView imgView : imgBtns) {
+            imgView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                   imgView.setSelected(!imgView.isSelected());
+                    String cmd = null;
+                    if (imgView.isSelected()) {
+                        try {
+                            cmd = onStr.get(imgBtns.indexOf(imgView));
+                        } catch (Exception ex){
+                            cmd = openDoorStr;
+                        }
+                    } else {
+                        try {
+                            cmd = offStr.get(imgBtns.indexOf(imgView));
+                        } catch (Exception ex){
+                            cmd = openDoorStr;
+                        }
+                    }
+                    requestUrl(cmd);
 
-        doorOpen.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                doorOpen.setSelected(true);
-                doorClose.setSelected(false);
-                requestUrl(openDoorStr);
-            }
-        });
-
-        doorClose.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                doorOpen.setSelected(false);
-                doorClose.setSelected(true);
-                requestUrl(closeDoorStr);
-            }
-        });
-
-
+                }
+            });
+        }
     }
 
     private void requestUrl(String _url) {
@@ -117,13 +109,14 @@ public class MenuActivity extends ActionBarActivity {
     }
 
     private void setView() {
-        lightOff = (ImageView) findViewById(R.id.light_off_id);
-        lightOn = (ImageView) findViewById(R.id.light_on_id);
-        doorClose = (ImageView) findViewById(R.id.door_close_id);
-        doorOpen = (ImageView) findViewById(R.id.door_open_id);
+//        lightOff = (ImageView) findViewById(R.id.light_off_id);
+//        lightOn = (ImageView) findViewById(R.id.light_on_id);
+//        doorClose = (ImageView) findViewById(R.id.door_close_id);
+//        doorOpen = (ImageView) findViewById(R.id.door_open_id);
 
-        doorClose.setSelected(true);
-        lightOff.setSelected(true);
+        for (int id : buttonIds) {
+            imgBtns.add((ImageView)findViewById(id));
+        }
 
     }
 

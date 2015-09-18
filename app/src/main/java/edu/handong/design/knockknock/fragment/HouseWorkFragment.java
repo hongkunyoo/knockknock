@@ -40,6 +40,7 @@ import edu.handong.design.knockknock.activity.TestActivity;
 import edu.handong.design.knockknock.util.Logger;
 import edu.handong.design.knockknock.util.ObjectPreferenceUtil;
 import edu.handong.design.knockknock.util.RandomUtil;
+import edu.handong.design.knockknock.view.CustomImageDialog;
 import edu.handong.design.knockknock.view.CustomSweetAlertDialog;
 
 /**
@@ -69,6 +70,12 @@ public class HouseWorkFragment extends Fragment {
             R.id.icon_wob_id1, R.id.icon_wob_id2, R.id.icon_wob_id3, R.id.icon_wob_id4,
             R.id.icon_wob_id5, R.id.icon_wob_id6, R.id.icon_wob_id7,
             R.id.icon_wob_id8
+    };
+
+    private int[] taskImages = new int[]{
+            R.drawable.task_info_01, R.drawable.task_info_02, R.drawable.task_info_03,
+            R.drawable.task_info_04, R.drawable.task_info_05, R.drawable.task_info_06,
+            R.drawable.task_info_07, R.drawable.task_info_08,
     };
 
 
@@ -104,19 +111,9 @@ public class HouseWorkFragment extends Fragment {
 
         setView(view);
         setBinding();
-//        ObjectPreferenceUtil pref = new ObjectPreferenceUtil(getActivity());
-//        pref.put("tab", 0);
-//        startAnim();
+
         return view;
     }
-
-//    @Override
-//    public void onResume() {
-//        super.onResume();
-//        ObjectPreferenceUtil pref = new ObjectPreferenceUtil(getActivity());
-//        pref.put("tab", 0);
-//        Logger.log(pref.get("tab", Integer.class));
-//    }
 
     private void setView(View view) {
         fab = (FloatingActionButton)view.findViewById(R.id.house_work_fab);
@@ -154,11 +151,11 @@ public class HouseWorkFragment extends Fragment {
 
         for (ProgressWheel progImg : progressImageArr) {
             progImg.setCase(getRand());
-            setProButton(progImg);
+            setProButton(progImg, progressImageArr.indexOf(progImg));
         }
     }
 
-    private void setProButton(final ProgressWheel pw) {
+    private void setProButton(final ProgressWheel pw, final int index) {
         pw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -180,8 +177,12 @@ public class HouseWorkFragment extends Fragment {
         pw.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
-                CustomSweetAlertDialog sweetDialog = new CustomSweetAlertDialog(getActivity());
-                sweetDialog.show();
+//                CustomSweetAlertDialog sweetDialog = new CustomSweetAlertDialog(getActivity());
+//                sweetDialog.setImage(taskImages[index]);
+//                sweetDialog.show();
+                CustomImageDialog customDialog = new CustomImageDialog(getActivity());
+                customDialog.setImage(taskImages[index]);
+                customDialog.show();
                 return false;
             }
         });

@@ -17,13 +17,13 @@
             android:layout_height="70dp"
             android:layout_gravity="left"
             android:id="@+id/shop_not_btn"
-            android:src="@drawable/shop_not_buy" />
+            android:src="@drawable/m_complete_new" />
         <ImageView
             android:layout_width="120dp"
             android:layout_height="70dp"
             android:layout_gravity="right"
             android:id="@+id/shop_ok_btn"
-            android:src="@drawable/shop_ok_buy" />
+            android:src="@drawable/shop_ok_buy_new" />
 
     </LinearLayout>
     <!-- Bottom View End-->

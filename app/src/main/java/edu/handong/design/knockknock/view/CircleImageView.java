@@ -81,6 +81,7 @@ public class CircleImageView extends ImageView {
 			setup();
 			mSetupPending = false;
 		}
+
 	}
 
 	@Override

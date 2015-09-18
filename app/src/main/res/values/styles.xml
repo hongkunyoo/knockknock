@@ -191,5 +191,11 @@
         <item name="android:background">@android:color/transparent</item>
     </style>
 
+    <style name="menu_btn_style">
+        <item name="android:layout_width">75dp</item>
+        <item name="android:layout_height">75dp</item>
+        <item name="android:layout_margin">0dp</item>
+    </style>
+
 
 </resources>

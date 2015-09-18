@@ -1,15 +1,19 @@
-<android.support.design.widget.CoordinatorLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/menu_layout"
-    tools:context="edu.handong.design.knockknock.activity.MenuActivity">
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/app_bar"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.v7.widget.Toolbar
@@ -18,7 +22,15 @@
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:src="@drawable/logo"/>
+
+        </android.support.v7.widget.Toolbar>
 
     </android.support.design.widget.AppBarLayout>
 
@@ -32,112 +44,208 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="60dp"
-        android:orientation="vertical"
-        >
+        android:orientation="vertical">
 
         <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
+            android:padding="15dp"
             android:background="@color/menu_header_bg"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:src="@drawable/menu_header_profile"/>
+            <ImageView
+                android:layout_width="130dp"
                 android:layout_height="wrap_content"
-                android:src="@drawable/menu_header"/>
+                android:src="@drawable/menu_header_info"/>
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:orientation="vertical">
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="3dp"
+                        android:src="@drawable/menu_header_right_top"/>
+                    <ImageView
+                        android:layout_width="65dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:src="@drawable/menu_header_right_top2"/>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_margin="3dp"
+                        android:src="@drawable/menu_header_3"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:layout_margin="3dp"
+                        android:src="@drawable/menu_header_right_bottom"/>
+                    <ImageView
+                        android:layout_width="65dp"
+                        android:layout_height="wrap_content"
+                        android:layout_margin="3dp"
+                        android:src="@drawable/menu_header_right_bottom2"/>
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_margin="3dp"
+                        android:src="@drawable/menu_header_3"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:padding="10dp"
+            android:orientation="vertical"
+            >
+            <ImageView
+                android:layout_marginTop="5dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/menu_remote"/>
+
+            <!--<include-->
+                <!--layout="@layout/custom_line" />-->
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:padding="3dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:gravity="center"
+                    android:layout_margin="15dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        style="@style/menu_btn_style"
+                        android:id="@+id/menu_btn_01"
+                        android:src="@drawable/menu_btn_01_c"/>
+                    <TextView
+                        android:layout_marginTop="10dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="도어락"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:gravity="center"
+                    android:layout_margin="15dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        style="@style/menu_btn_style"
+                        android:id="@+id/menu_btn_02"
+                        android:src="@drawable/menu_btn_02_c"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="조명"/>
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="3dp"
+                    android:gravity="center"
+                    android:layout_margin="15dp"
+                    android:orientation="vertical">
+                    <ImageView
+                        style="@style/menu_btn_style"
+                        android:id="@+id/menu_btn_03"
+                        android:src="@drawable/menu_btn_03_c"/>
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="보일러"/>
+                </LinearLayout>
+
+
             </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true"
-        android:padding="10dp"
-        android:orientation="vertical"
-        >
-        <ImageView
-            android:layout_marginTop="10dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/menu_my_room"/>
+            <include
+                layout="@layout/custom_line" />
 
-        <include
-            layout="@layout/custom_line" />
+            <ImageView
+                android:layout_marginTop="30dp"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:src="@drawable/menu_talk"/>
+            <!--<include-->
+                <!--layout="@layout/custom_line" />-->
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="3dp"
-            android:orientation="horizontal"
-            >
-            <ImageView
-                android:layout_width="160dp"
+            <LinearLayout
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/door_close_id"
-                android:src="@drawable/door_close_c"/>
+                android:gravity="center"
+                android:padding="20dp"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/menu_talk01"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/menu_talk02"/>
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/menu_talk03"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <EditText
+                        android:layout_marginTop="10dp"
+                        android:layout_width="220dp"
+                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content"
+                        android:hint="알리고 싶은 말을 적어주세요."/>
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_gravity="center_vertical"
+                        android:src="@drawable/menu_regist"/>
+                </LinearLayout>
+            </LinearLayout>
             <ImageView
-                android:layout_width="160dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/door_open_id"
-                android:src="@drawable/door_open_c"/>
+                android:layout_marginTop="10dp"
+                android:src="@drawable/menu_copyright"/>
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:padding="3dp"
-            android:orientation="horizontal"
-            >
-            <ImageView
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/light_off_id"
-                android:src="@drawable/light_off_c"/>
-            <ImageView
-                android:layout_width="160dp"
-                android:layout_height="wrap_content"
-                android:id="@+id/light_on_id"
-                android:src="@drawable/light_on_c"/>
-        </LinearLayout>
-
-        <include
-            layout="@layout/custom_line" />
-
-
-        <ImageView
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:layout_gravity="center"
-            android:src="@drawable/menu_item01"/>
-
-        <ImageView
-            android:layout_width="160dp"
-            android:layout_height="wrap_content"
-            android:padding="5dp"
-            android:layout_gravity="center"
-            android:src="@drawable/menu_item02"/>
-
-        <include
-            layout="@layout/custom_line" />
-
-        <ImageView
-            android:layout_marginTop="30dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/menu_talk"/>
-        <include
-            layout="@layout/custom_line" />
-
-        <ImageView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/menu_chat"/>
-
     </LinearLayout>
     </LinearLayout>
 
-
-</android.support.design.widget.CoordinatorLayout>
+</ScrollView>

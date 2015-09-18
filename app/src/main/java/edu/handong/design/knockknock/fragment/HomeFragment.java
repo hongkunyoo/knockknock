@@ -24,6 +24,8 @@ import com.oguzdev.circularfloatingactionmenu.library.FloatingActionButton;
 import com.oguzdev.circularfloatingactionmenu.library.FloatingActionMenu;
 import com.oguzdev.circularfloatingactionmenu.library.SubActionButton;
 
+import java.util.ArrayList;
+
 import edu.handong.design.knockknock.R;
 import edu.handong.design.knockknock.activity.MainActivity;
 import edu.handong.design.knockknock.util.Logger;
@@ -54,6 +56,11 @@ public class HomeFragment extends Fragment {
         R.drawable.h_no_room_s, R.drawable.h_outside_s};
     private int[] roomImages = new int[] {R.drawable.h_room_freemode_my, R.drawable.h_room_no_dist_my,
         R.drawable.h_room_no_room_my, R.drawable.h_room_outside_my};
+
+    private int[] profileImages = new int[] {R.drawable.h_profile_taewan, R.drawable.h_profile_seojun,
+            R.drawable.h_profile_dohyung};
+    private int[] profileId = new int[] {R.id.h_profile_btn1, R.id.h_profile_btn2, R.id.h_profile_btn3};
+    private ArrayList<ImageButton> profileBtn = new ArrayList<>();
 
     private RelativeLayout homeBg;
     private ImageView dimBg;
@@ -102,21 +109,27 @@ public class HomeFragment extends Fragment {
         homeBg = (RelativeLayout) view.findViewById(R.id.frag_home_bg_id);
         dimBg = (ImageView) view.findViewById(R.id.dim_bg_id);
 
-        profileBtn1 = (ImageButton) view.findViewById(R.id.h_profile_btn1);
+
         profileBtn2 = (ImageButton) view.findViewById(R.id.h_profile_btn2);
 
-        viewProfile(profileBtn1);
-        viewProfile(profileBtn2);
+        for (int id : profileId) {
+            profileBtn.add((ImageButton) view.findViewById(id));
+        }
+
+        for (ImageButton btn : profileBtn) {
+            viewProfile(btn, profileBtn.indexOf(btn));
+        }
+
 
         myMenu(view);
     }
 
-    private void viewProfile(ImageButton bt) {
+    private void viewProfile(ImageButton bt, final int index) {
         bt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 CustomImageDialog customDialog = new CustomImageDialog(getActivity());
-                customDialog.setImage(R.drawable.h_profile);
+                customDialog.setImage(profileImages[index]);
                 customDialog.show();
             }
         });

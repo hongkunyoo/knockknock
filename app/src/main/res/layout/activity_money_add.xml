@@ -418,7 +418,7 @@
         </LinearLayout>
 
         <ImageView
-            android:src="@drawable/okay_btn_70_c"
+            android:src="@drawable/okay_btn_100_c"
             android:layout_width="50dp"
             android:layout_height="50dp"
             android:layout_marginTop="15dp"

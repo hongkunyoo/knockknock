@@ -16,7 +16,7 @@
             android:layout_height="70dp"
             android:layout_gravity="left"
             android:id="@+id/m_complete_btn"
-            android:src="@drawable/m_complete" />
+            android:src="@drawable/m_complete_new" />
 
     </LinearLayout>
     <!-- Bottom View End-->
